@@ -1,0 +1,214 @@
+/* Variables */
+
+    /* colors */
+    $color-light: #EDEDED;
+    $color-cyan: #69B0AC;
+    $color-dark: #4E4B4B;
+
+    //indicator movment variables
+    $li-width: 60px;
+    $li-height: 60px;
+    $li-margin: 8px;
+    $li-translate: 0 -$li-width - $li-margin*2;
+    $startIndex: 0;
+    $li-num: 5;
+
+/* Mixins */
+@mixin transition($style, $type, $time) {
+    transition: $style $type $time;
+    -webkit-transition: $style $type $time;
+    -moz-transition: $style $type $time;
+    -ms-transition: $style $type $time;
+    -o-transition: $style $type $time;
+}
+
+@mixin transform-translateY($deg) {
+    transform: translateY($deg);
+    -webkit-transform: translateY($deg);
+    -moz-transform: translateY($deg);
+    -ms-transform: translateY($deg);
+    -o-transform: translateY($deg);
+}
+
+@mixin transform-translateX($deg, $multiply: 1) {
+    transform: translateX(calc(#{$deg} * #{$multiply}));
+    -webkit-transform: translateX(calc(#{$deg} * #{$multiply}));
+    -moz-transform: translateX(calc(#{$deg} * #{$multiply}));
+    -ms-transform: translateX(calc(#{$deg} * #{$multiply}));
+    -o-transform: translateX(calc(#{$deg} * #{$multiply}));
+}
+
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+}
+
+@mixin indicator-selector($shadow-offset-x, $shadow-offset-y) {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: calc(#{$li-width} / 2);
+    height: calc(#{$li-height} /2);
+    background: transparent;
+    box-shadow: $shadow-offset-x $shadow-offset-y $color-light;
+    @include border-radius(50%);
+
+}
+
+@mixin animation-delay($time) {
+    animation-delay: calc(#{$time}/10);
+    -webkit-animation-delay: calc(#{$time}/10); 
+    -moz-animation-delay: calc(#{$time}/10);
+    -ms-animation-delay: calc(#{$time}/10);
+    -o-animation-delay: calc(#{$time}/10);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Typography  */
+// h1 {}
+
+// h2 {}
+
+// p {}
+
+//  Buttons
+button {
+    &.navbar-toggle {
+        display: none;
+    }
+}
+
+/* Navigation */
+header {
+    &.top-navigation {
+        padding: 0px;
+        background: $color-light
+    }
+
+}
+
+
+ul {
+    &.top-menu {
+        position: relative;
+        height: 60px;
+        margin: 0;
+        padding: 0;
+
+        &>li {
+            opacity: 0;
+            z-index: 2;
+            animation: linear 0.3s opacity forwards;
+            a {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: $li-width;
+                height: $li-height;
+                text-align: center;
+                font-weight: 500;
+                color: $color-dark;
+                z-index: 2;
+                @include transition(all, linear, 0.5s);
+
+
+                & .icon {
+                    position: relative;
+                    display: block;
+                    line-height: 65px;
+                    font-size: 1.5rem;
+                    @include transition(all, linear, 0.5s);
+                }
+
+                & .text {
+                    position: absolute;
+                    background: $color-cyan;
+                    color: $color-light;
+                    padding: 2px 7px;
+                    font-weight: 400;
+                    font-size: 0.55rem;
+                    letter-spacing: 0.05rem;
+                    opacity: 0;
+
+                    @include border-radius(15px);
+                    @include transition(all, linear, 0.5s);
+                    @include transform-translateY(-15px);
+                }
+
+            }
+
+            &:hover {
+                a {
+                    color: $color-cyan;
+                }
+            }
+
+            &.active {
+                a {
+                    & .icon {
+                        color: $color-cyan;
+                        @include transform-translateY(32px);
+
+                    }
+
+                    & .text {
+                        opacity: 1;
+                        @include transform-translateY(0px);
+                    }
+                }
+            }
+        }
+
+        & .indicator {
+            position: absolute;
+            top: 50%;
+            width: calc(#{$li-width} + 10px);
+            height: calc(#{$li-height} + 10px);
+            margin-right: 3px;
+            background: $color-light;
+            z-index: 1; 
+            @include transition(all, linear, 0.5s);
+            @include border-radius(100%);
+
+            &:before {
+                left: -30px;
+                @include indicator-selector(10px, -18px);
+            }
+
+            &:after {
+                right: -30px;
+                @include indicator-selector(-10px, -18px);
+            }
+        }
+    }
+}
+
+@for $i from $startIndex through $li-num {
+    #item-#{$i} {
+        @include animation-delay(#{$i}s);
+        &.active {
+            &~.indicator {
+               @include transform-translateX(#{$li-translate}, #{$i});
+
+            }
+        }
+    }
+}
+
+// Animations
+
+@keyframes opacity {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
