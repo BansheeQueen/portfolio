@@ -1,17 +1,23 @@
 /* Variables */
 
-    /* colors */
-    $color-light: #EDEDED;
-    $color-cyan: #69B0AC;
-    $color-dark: #4E4B4B;
+/* colors */
+$color-light: #EDEDED;
+$color-cyan: #69B0AC;
+$color-cyan-light: #99D9D6;
+$color-dark: #4E4B4B;
 
-    //indicator movment variables
-    $li-width: 60px;
-    $li-height: 60px;
-    $li-margin: 8px;
-    $li-translate: 0 -$li-width - $li-margin*2;
-    $startIndex: 0;
-    $li-num: 5;
+//indicator movment variables
+$li-width: 60px;
+$li-height: 60px;
+$li-margin: 8px;
+$li-translate: 0 -$li-width - $li-margin*2;
+$startIndex: 0;
+$li-num: 5; //change this for more menu li elements
+
+// fonts variables
+$font-sans: 'Open Sans',
+Verdana,
+sans-serif;
 
 /* Mixins */
 @mixin transition($style, $type, $time) {
@@ -50,7 +56,7 @@
 @mixin indicator-selector($shadow-offset-x, $shadow-offset-y) {
     content: '';
     position: absolute;
-    top: 30px;
+    top: 29px;
     width: calc(#{$li-width} / 2);
     height: calc(#{$li-height} /2);
     background: transparent;
@@ -61,7 +67,7 @@
 
 @mixin animation-delay($time) {
     animation-delay: calc(#{$time}/10);
-    -webkit-animation-delay: calc(#{$time}/10); 
+    -webkit-animation-delay: calc(#{$time}/10);
     -moz-animation-delay: calc(#{$time}/10);
     -ms-animation-delay: calc(#{$time}/10);
     -o-animation-delay: calc(#{$time}/10);
@@ -71,12 +77,32 @@ body {
     padding: 0;
     margin: 0;
     font-size: 16px;
+    font-family: $font-sans;
 }
 
 /* Typography  */
-// h1 {}
+h1 {
+    margin: 1rem 0;
+    color: $color-light;
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
 
-// h2 {}
+    & em {
+        color: $color-dark;
+        font-size: 3.5rem;
+        font-style: normal;
+    }
+
+}
+
+h2 {
+    color: $color-dark;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+}
 
 // p {}
 
@@ -90,8 +116,14 @@ button {
 /* Navigation */
 header {
     &.top-navigation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
         padding: 0px;
-        background: $color-light
+        background: $color-light;
+        z-index: 3;
     }
 
 }
@@ -108,6 +140,7 @@ ul {
             opacity: 0;
             z-index: 2;
             animation: linear 0.3s opacity forwards;
+
             a {
                 position: relative;
                 display: flex;
@@ -177,17 +210,17 @@ ul {
             height: calc(#{$li-height} + 10px);
             margin-right: 3px;
             background: $color-light;
-            z-index: 1; 
+            z-index: 1;
             @include transition(all, linear, 0.5s);
             @include border-radius(100%);
 
             &:before {
-                left: -30px;
+                left: -29px;
                 @include indicator-selector(10px, -18px);
             }
 
             &:after {
-                right: -30px;
+                right: -29px;
                 @include indicator-selector(-10px, -18px);
             }
         }
@@ -197,18 +230,377 @@ ul {
 @for $i from $startIndex through $li-num {
     #item-#{$i} {
         @include animation-delay(#{$i}s);
+
         &.active {
             &~.indicator {
-               @include transform-translateX(#{$li-translate}, #{$i});
+                @include transform-translateX(#{$li-translate}, #{$i});
 
             }
         }
     }
 }
 
+
+//  Banner section
+
+section {
+    &.banner {
+        position: relative;
+        top: 60px;
+        height: 100vh;
+        min-height: 500px;
+        background-image: url('/assets/images/background-top.png');
+        background-size: cover;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+
+        & .title {
+            height: 70vh;
+            min-height: 350px;
+
+            & h1 {
+                flex-basis: 10%;
+                text-shadow: 0px 0px 3px $color-dark;
+                text-align: right;
+
+                & em {
+                    animation: 10s linear infinite color-change;
+                }
+
+            }
+
+            & h2 {
+                flex-basis: 10%;
+                color: $color-light;
+                font-size: 2rem;
+                text-align: right;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    float: right;
+                    width: 0%;
+                    height: 5px;
+                    background: linear-gradient(50deg, $color-cyan, $color-dark);
+                    box-shadow: 0px 0px 1px $color-dark;
+                    animation: 1s 0.5s linear forwards title-line-appear;
+                    @include border-radius(30px);
+                }
+            }
+        }
+    }
+}
+
+
+section {
+    &.banner {
+        & .image-container {
+            height: 70vh;
+            min-height: 350px;
+        }
+
+        & .parrot-container,
+        .monitor-container {
+            min-height: 350px;
+
+            & img {
+                position: absolute;
+                right: 0;
+            }
+        }
+
+        & .monitor-container {
+            position: relative;
+            width: 400px;
+
+            & .screen {
+                left: 50%;
+                bottom: -100px;
+                width: 400px;
+                @include transform-translateX(-50%, 1);
+            }
+
+            & .screen-text {
+                position: absolute;
+                top: 130px;
+                right: 65px;
+                width: 120px;
+                transform-origin: top left;
+            }
+
+        &.active {
+            & .screen-text {
+                animation: linear forwards hinge 3s;
+                @include animation-delay(8s);
+            }
+        }
+
+        }
+
+        & .parrot-container {
+            position: absolute;
+            top: 15px;
+            left: 55%;
+            width: 120px;
+            z-index: 2;
+            cursor: pointer;
+
+            & img {
+                width: 100%;
+            }
+            
+            &.active {
+                animation: 2s linear fly forwards;
+                @include animation-delay(5s);
+
+                & .right-wing {
+                    animation: 0.5s linear fly-wings-p infinite;
+                }
+
+                & .left-wing {
+                    animation: 0.5s linear fly-wings-l infinite;
+                }
+
+                & .head {
+                    animation: 0.3s linear fly-head forwards;
+                    @include animation-delay(0.2s);
+                }
+
+                & .beak, .left-eye, .right-eye {
+                    animation: 0.3s linear fly-eye forwards;
+                    @include animation-delay(0.2s);
+                }
+
+                & .legs {
+                    animation: 0.5s linear fly-legs forwards;
+                    @include animation-delay(0.3s);
+                }
+            }
+        }
+    }
+}
+
+section {
+    &.about {
+        & img {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    section {
+        &.banner {
+            & .title {
+                & h1 {
+                    font-size: 3rem;
+
+                }
+
+                & h2 {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+    section {
+        &.banner {
+            & .monitor-container {
+                width: 300px;
+                & .screen {
+                    bottom: 0px;
+                    width: 300px;
+                }
+
+                & .screen-text {
+                    top: 105px;
+                    right: 45px;
+                    width: 95px;
+                }
+
+            }
+
+            & .parrot-container {
+                top: 10px;
+                width: 100px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    section {
+        &.banner {
+            & .title {
+                & h1 {
+                    font-size: 5rem;
+                &em {
+                    font-size: 4rem;
+                }
+
+                }
+
+                & h2 {
+                    font-size: 3rem;
+                }
+            }
+        }
+    }
+
+    section {
+        &.banner {
+            & .monitor-container {
+                width: 450px;
+                & .screen {
+                    bottom: -110px;
+                    width: 450px;
+                }
+
+                & .screen-text {
+                    top: 95px;
+                    right: 75px;
+                    width: 140px;
+                }
+
+            }
+
+            & .parrot-container {
+                top: -20px;
+                width: 120px;
+            }
+        }
+    }
+}
+
+
+
 // Animations
 
 @keyframes opacity {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
+@keyframes color-change {
+    0% {
+        color: $color-dark;
+    }
+
+    15% {
+        color: $color-cyan;
+    }
+
+    30% {
+        color: $color-cyan-light;
+    }
+
+    45% {
+        color: $color-light;
+    }
+
+    60% {
+        color: $color-cyan-light;
+    }
+
+    75% {
+        color: $color-cyan;
+    }
+
+    95% {
+        color: $color-dark;
+    }
+
+
+}
+
+@keyframes title-line-appear {
+    0% {
+        width: 0%
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fly-wings-p {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  @keyframes fly-wings-l {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  @keyframes fly-head {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
+  }
+  
+  @keyframes fly-eye {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @keyframes fly-legs {
+    0% {transform: translateY(0px)}
+    50% {transform: translateY(-2px)}
+    100%{transform: translateY(2px)}
+  }
+  
+  @keyframes fly {
+    0% {
+      transform: translate(0%, 0%);
+    }
+    30% {
+      transform: translate(-60%, 40%);
+    }
+    50% {
+      transform: translate(-120%, -40%);
+    }
+    60% {
+      transform: translate(-180%, -80%);
+    }
+    70% {
+      transform: translate(-240%, -160%);
+    }
+    80% {
+      transform: translate(-300%, -200%);
+    }
+    90% {
+      transform: translate(-360%, -250%);
+    }
+    100% {
+      transform: translate(-420%, -300%);
+    }
+  }
+  

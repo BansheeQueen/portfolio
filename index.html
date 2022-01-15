@@ -6,9 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front End Developer - Katarzyna Soczka</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link   rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
+<body>
 <header class="top-navigation">
     <div class="container-fluid">
         <div class="row">
@@ -40,6 +46,7 @@
                                     <i class="fas fa-comment"></i>
                                 </span>
                                 <span class="text">Contact</span></a></li>
+                                  
                         <div class="indicator"></div>
                     </ul>
                 </nav>
@@ -61,30 +68,35 @@
         </div>
 </header>
 <section class="banner">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-sm-4">
+            <div class="col-lg-6 col-md-7">
+                <div class="title d-flex flex-column justify-content-center align-items-end">
                 <h1>
                     <em>Front-end</em>
                     developer
                 </h1>
                 <h2>Katarzyna Soczka</h2>
             </div>
-            <div class="col-md-6 col-sm-8">
-                <div class="parrot-container">
-                    <img src="assets/images/parrot/left-wing.png" alt="Left parrot wing">
-                    <img src="assets/images/parrot/torso.png" alt="Parrot torso">
-                    <img src="assets/images/parrot/head.png" alt="Parrot head">
-                    <img src="assets/images/parrot/left-eye.png" alt="Left parrot eye">
-                    <img src="assets/images/parrot/right-eye.png" alt="Right parrot eye">
-                    <img src="assets/images/parrot/beak.png" alt="Parrot Beak">
-                    <img src="assets/images/parrot/right-wing.png" alt="Right parrot wing">
-                </div>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <div class="image-container position-relative d-flex flex-column justify-content-center align-items-center">
                 <div class="monitor-container">
                     <img src="assets/images/screen/screen.png" alt="Screen" class="screen">
-                    <img src="assets/images/screen/html.png" alt="Text on screen" class="Text on screen">
-                </div>
+                    <img src="assets/images/screen/html.png" alt="Text on screen" class="screen-text">
 
+                    <div class="parrot-container">
+                        <img src="assets/images/parrot/left-wing.png" alt="Left parrot wing" class="left-wing">
+                        <img src="assets/images/parrot/torso.png" alt="Parrot torso" class="torso">
+                        <img src="assets/images/parrot/head.png" alt="Parrot head" class="head">
+                        <img src="assets/images/parrot/left-eye.png" alt="Left parrot eye" class="left-eye">
+                        <img src="assets/images/parrot/right-eye.png" alt="Right parrot eye" class="right-eye">
+                        <img src="assets/images/parrot/beak.png" alt="Parrot Beak" class="beak">
+                        <img src="assets/images/parrot/right-wing.png" alt="Right parrot wing" class="right-wing">
+                        <img src="assets/images/parrot/legs.png" alt="Parrot legs" class="legs">
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -103,7 +115,7 @@
                                 autem. Eveniet facere commodi accusamus et modi!</p>
                         </div>
                         <div class="col-md-4">
-                            <img src="images/photo-about-me.png" alt="" class="about-me-picture">
+                            <img src="assets/images/photo-about-me.png" alt="" class="about-me-picture">
                         </div>
                     </div>
                 </section>
@@ -172,7 +184,7 @@
     </div>
 </div>
 
-<footer>
+<!-- <footer>
     <section class="contact">
         <div class="row">
             <div class="col-md-2 social">
@@ -192,10 +204,7 @@
             <div class="col-md-12 copyright">&copy; Katarzyna Soczka</div>
             </div>
         </div>
-</footer>
-
-<body>
-
+</footer> -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>

@@ -10,3 +10,9 @@ $('.menu-item').on('click', function() {
 
     $(this).addClass('active');
 })
+
+// Parrot animation on click
+$('.parrot-container').on('click', function() {
+    $('.parrot-container').addClass('active');
+    $('.monitor-container').addClass('active');
+  })

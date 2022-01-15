@@ -5,17 +5,46 @@ body {
   padding: 0;
   margin: 0;
   font-size: 16px;
+  font-family: "Open Sans", Verdana, sans-serif;
 }
 
 /* Typography  */
+h1 {
+  margin: 1rem 0;
+  color: #EDEDED;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
+
+h1 em {
+  color: #4E4B4B;
+  font-size: 3.5rem;
+  font-style: normal;
+}
+
+h2 {
+  color: #4E4B4B;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+}
+
 button.navbar-toggle {
   display: none;
 }
 
 /* Navigation */
 header.top-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
   padding: 0px;
   background: #EDEDED;
+  z-index: 3;
 }
 
 ul.top-menu {
@@ -131,10 +160,10 @@ ul.top-menu .indicator {
 }
 
 ul.top-menu .indicator:before {
-  left: -30px;
+  left: -29px;
   content: '';
   position: absolute;
-  top: 30px;
+  top: 29px;
   width: calc(60px / 2);
   height: calc(60px /2);
   background: transparent;
@@ -147,10 +176,10 @@ ul.top-menu .indicator:before {
 }
 
 ul.top-menu .indicator:after {
-  right: -30px;
+  right: -29px;
   content: '';
   position: absolute;
-  top: 30px;
+  top: 29px;
   width: calc(60px / 2);
   height: calc(60px /2);
   background: transparent;
@@ -258,12 +287,338 @@ ul.top-menu .indicator:after {
   -o-transform: translateX(calc(-76px * 5));
 }
 
+section.banner {
+  position: relative;
+  top: 60px;
+  height: 100vh;
+  min-height: 500px;
+  background-image: url("/assets/images/background-top.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+section.banner .title {
+  height: 70vh;
+  min-height: 350px;
+}
+
+section.banner .title h1 {
+  flex-basis: 10%;
+  text-shadow: 0px 0px 3px #4E4B4B;
+  text-align: right;
+}
+
+section.banner .title h1 em {
+  animation: 10s linear infinite color-change;
+}
+
+section.banner .title h2 {
+  flex-basis: 10%;
+  color: #EDEDED;
+  font-size: 2rem;
+  text-align: right;
+}
+
+section.banner .title h2:after {
+  content: '';
+  display: block;
+  float: right;
+  width: 0%;
+  height: 5px;
+  background: linear-gradient(50deg, #69B0AC, #4E4B4B);
+  box-shadow: 0px 0px 1px #4E4B4B;
+  animation: 1s 0.5s linear forwards title-line-appear;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+section.banner .image-container {
+  height: 70vh;
+  min-height: 350px;
+}
+
+section.banner .parrot-container,
+section.banner .monitor-container {
+  min-height: 350px;
+}
+
+section.banner .parrot-container img,
+section.banner .monitor-container img {
+  position: absolute;
+  right: 0;
+}
+
+section.banner .monitor-container {
+  position: relative;
+  width: 400px;
+}
+
+section.banner .monitor-container .screen {
+  left: 50%;
+  bottom: -100px;
+  width: 400px;
+  transform: translateX(calc(-50% * 1));
+  -webkit-transform: translateX(calc(-50% * 1));
+  -moz-transform: translateX(calc(-50% * 1));
+  -ms-transform: translateX(calc(-50% * 1));
+  -o-transform: translateX(calc(-50% * 1));
+}
+
+section.banner .monitor-container .screen-text {
+  position: absolute;
+  top: 130px;
+  right: 65px;
+  width: 120px;
+  transform-origin: top left;
+}
+
+section.banner .monitor-container.active .screen-text {
+  animation: linear forwards hinge 3s;
+  animation-delay: calc(8s/10);
+  -webkit-animation-delay: calc(8s/10);
+  -moz-animation-delay: calc(8s/10);
+  -ms-animation-delay: calc(8s/10);
+  -o-animation-delay: calc(8s/10);
+}
+
+section.banner .parrot-container {
+  position: absolute;
+  top: 15px;
+  left: 55%;
+  width: 120px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+section.banner .parrot-container img {
+  width: 100%;
+}
+
+section.banner .parrot-container.active {
+  animation: 2s linear fly forwards;
+  animation-delay: calc(5s/10);
+  -webkit-animation-delay: calc(5s/10);
+  -moz-animation-delay: calc(5s/10);
+  -ms-animation-delay: calc(5s/10);
+  -o-animation-delay: calc(5s/10);
+}
+
+section.banner .parrot-container.active .right-wing {
+  animation: 0.5s linear fly-wings-p infinite;
+}
+
+section.banner .parrot-container.active .left-wing {
+  animation: 0.5s linear fly-wings-l infinite;
+}
+
+section.banner .parrot-container.active .head {
+  animation: 0.3s linear fly-head forwards;
+  animation-delay: calc(0.2s/10);
+  -webkit-animation-delay: calc(0.2s/10);
+  -moz-animation-delay: calc(0.2s/10);
+  -ms-animation-delay: calc(0.2s/10);
+  -o-animation-delay: calc(0.2s/10);
+}
+
+section.banner .parrot-container.active .beak, section.banner .parrot-container.active .left-eye, section.banner .parrot-container.active .right-eye {
+  animation: 0.3s linear fly-eye forwards;
+  animation-delay: calc(0.2s/10);
+  -webkit-animation-delay: calc(0.2s/10);
+  -moz-animation-delay: calc(0.2s/10);
+  -ms-animation-delay: calc(0.2s/10);
+  -o-animation-delay: calc(0.2s/10);
+}
+
+section.banner .parrot-container.active .legs {
+  animation: 0.5s linear fly-legs forwards;
+  animation-delay: calc(0.3s/10);
+  -webkit-animation-delay: calc(0.3s/10);
+  -moz-animation-delay: calc(0.3s/10);
+  -ms-animation-delay: calc(0.3s/10);
+  -o-animation-delay: calc(0.3s/10);
+}
+
+section.about img {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  section.banner .title h1 {
+    font-size: 3rem;
+  }
+  section.banner .title h2 {
+    font-size: 1.5rem;
+  }
+  section.banner .monitor-container {
+    width: 300px;
+  }
+  section.banner .monitor-container .screen {
+    bottom: 0px;
+    width: 300px;
+  }
+  section.banner .monitor-container .screen-text {
+    top: 105px;
+    right: 45px;
+    width: 95px;
+  }
+  section.banner .parrot-container {
+    top: 10px;
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  section.banner .title h1 {
+    font-size: 5rem;
+  }
+  section.banner .title h1em {
+    font-size: 4rem;
+  }
+  section.banner .title h2 {
+    font-size: 3rem;
+  }
+  section.banner .monitor-container {
+    width: 450px;
+  }
+  section.banner .monitor-container .screen {
+    bottom: -110px;
+    width: 450px;
+  }
+  section.banner .monitor-container .screen-text {
+    top: 95px;
+    right: 75px;
+    width: 140px;
+  }
+  section.banner .parrot-container {
+    top: -20px;
+    width: 120px;
+  }
+}
+
 @keyframes opacity {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    color: #4E4B4B;
+  }
+  15% {
+    color: #69B0AC;
+  }
+  30% {
+    color: #99D9D6;
+  }
+  45% {
+    color: #EDEDED;
+  }
+  60% {
+    color: #99D9D6;
+  }
+  75% {
+    color: #69B0AC;
+  }
+  95% {
+    color: #4E4B4B;
+  }
+}
+
+@keyframes title-line-appear {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes fly-wings-p {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fly-wings-l {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fly-head {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes fly-eye {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fly-legs {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  30% {
+    transform: translate(-60%, 40%);
+  }
+  50% {
+    transform: translate(-120%, -40%);
+  }
+  60% {
+    transform: translate(-180%, -80%);
+  }
+  70% {
+    transform: translate(-240%, -160%);
+  }
+  80% {
+    transform: translate(-300%, -200%);
+  }
+  90% {
+    transform: translate(-360%, -250%);
+  }
+  100% {
+    transform: translate(-420%, -300%);
   }
 }
 /*# sourceMappingURL=style.css.map */
