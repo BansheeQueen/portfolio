@@ -350,11 +350,13 @@ ul {
     bottom: 0;
     left: 0;
     right: 0;
+    display: none;
     background:rgba(72, 72, 72, 0.8);
     opacity: 0;
     @include transition(all, linear, 0.5s);
 
     &.open {
+        display: block;
         opacity: 1;
 
         & .menu-box {
@@ -497,6 +499,7 @@ section {
             left: 50%;
             text-align: center;
             @include transform-translate(-50%, -50%);
+            z-index: 2;
 
            & h1, h2, h3 {
                 text-shadow: 0px 5px 1px $color-dark;

@@ -394,6 +394,7 @@ ul.top-menu .indicator:after {
   bottom: 0;
   left: 0;
   right: 0;
+  display: none;
   background: rgba(72, 72, 72, 0.8);
   opacity: 0;
   transition: all linear 0.5s;
@@ -404,6 +405,7 @@ ul.top-menu .indicator:after {
 }
 
 .mobile-menu.open {
+  display: block;
   opacity: 1;
 }
 
@@ -560,6 +562,7 @@ section.banner .banner-title {
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 section.banner .banner-title h1, section.banner .banner-title h2, section.banner .banner-title h3 {
