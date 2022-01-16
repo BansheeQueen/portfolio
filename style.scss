@@ -423,14 +423,13 @@ ul {
 }
 
 @media screen and (max-width: 680px) {
-    .mobile-banner-title {
-        display: block;
-    }
-
 header {
     &.top-navigation {
     & .navbar-toggle {display: block;}
     & .nav-menu {display: none;}
+    & .mobile-banner-title {
+        display: block;
+    }
     }
 }
 }

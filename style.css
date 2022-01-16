@@ -481,14 +481,14 @@ ul.top-menu .indicator:after {
 }
 
 @media screen and (max-width: 680px) {
-  .mobile-banner-title {
-    display: block;
-  }
   header.top-navigation .navbar-toggle {
     display: block;
   }
   header.top-navigation .nav-menu {
     display: none;
+  }
+  header.top-navigation .mobile-banner-title {
+    display: block;
   }
 }
 
