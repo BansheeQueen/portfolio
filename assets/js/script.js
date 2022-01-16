@@ -1,3 +1,4 @@
+
 //  navigation indicator movement
 $($('.menu-item').get().reverse()).each(function(index) {
     $(this).attr('id', 'item-'+(index));
@@ -16,3 +17,6 @@ $('.parrot-container').on('click', function() {
     $('.parrot-container').addClass('active');
     $('.monitor-container').addClass('active');
   })
+
+  const parallax = document.querySelector('.monitor-container');
+  const parralaxInstance = new Parallax(parallax);
