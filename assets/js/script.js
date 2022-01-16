@@ -12,11 +12,25 @@ $('.menu-item').on('click', function() {
     $(this).addClass('active');
 })
 
-// Parrot animation on click
-$('.parrot-container').on('click', function() {
-    $('.parrot-container').addClass('active');
-    $('.monitor-container').addClass('active');
-  })
+// Mobile banner and nav
+if($('.mobile-banner-title').length) {
+    const mobileBannerContent = $('.banner-title').html();
+    $('.mobile-banner-title').append(mobileBannerContent);    
+}
+
+
+if($('.mobile-menu .navigation').length) {
+    const mobileNavContent = $('.nav-menu .navigation').html();
+    $('.mobile-menu .navigation').append(mobileNavContent);    
+}
+
+$('.navbar-toggle').on('click', function() {
+    $('.navbar-toggle').toggleClass('open');
+    $('.mobile-menu').toggleClass('open');
+});
+
+
+// Parallax-js
 
   const parallax = document.querySelector('.parallax-scene');
   const parralaxInstance = new Parallax(parallax);
