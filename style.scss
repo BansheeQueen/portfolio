@@ -5,6 +5,7 @@ $color-light: #EDEDED;
 $color-cyan: #69B0AC;
 $color-cyan-light: #99D9D6;
 $color-dark: #4E4B4B;
+$color-blue: #9CDCFE;
 
 //indicator movment variables
 $li-width: 60px;
@@ -15,9 +16,7 @@ $startIndex: 0;
 $li-num: 5; //change this for more menu li elements
 
 // fonts variables
-$font-sans: 'Open Sans',
-Verdana,
-sans-serif;
+$font-sans: 'Open Sans', 'Verdana', sans-serif;
 
 /* Mixins */
 @mixin transition($style, $type, $time) {
@@ -42,6 +41,15 @@ sans-serif;
     -moz-transform: translateX(calc(#{$deg} * #{$multiply}));
     -ms-transform: translateX(calc(#{$deg} * #{$multiply}));
     -o-transform: translateX(calc(#{$deg} * #{$multiply}));
+}
+
+
+@mixin transform-translate($deg1, $deg2) {
+    transform: translate($deg1, $deg2);
+    -webkit-transform: translate($deg1, $deg2);
+    -moz-transform: translate($deg1, $deg2);
+    -ms-transform: translate($deg1, $deg2);
+    -o-transform: translate($deg1, $deg2);
 }
 
 
@@ -89,19 +97,24 @@ h1 {
     letter-spacing: 0.5rem;
     text-transform: uppercase;
 
-    & em {
-        color: $color-dark;
-        font-size: 3.5rem;
-        font-style: normal;
-    }
-
 }
 
 h2 {
-    color: $color-dark;
-    font-size: 2.5rem;
+    color: $color-cyan-light;
+    font-size: 3rem;
     font-weight: 600;
     letter-spacing: 0.2rem;
+}
+
+h3 {
+    color: $color-light;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+}
+
+code {
+    color: $color-blue;
 }
 
 // p {}
@@ -240,12 +253,150 @@ ul {
     }
 }
 
-
+@media screen and (max-width: 680px) {
+    .mobile-banner-title {
+        display: block;
+    }
+}
 //  Banner section
+section {
+    &.banner {
+        height: calc(100vh - 60px);
+        margin-top: 60px;
+        background-image: url(/assets/images/background.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-blend-mode:color-dodge; 
+        background-color: $color-dark;
 
+        & .parallax-scene {
+            width: 100%;
+            height: 100vh;
+            padding-top: 60px;
+            & .code {
+                width: 100%;
+                height: 100vh;
+
+            & #code-1 {
+                position: absolute;
+                top: 20%;
+                left: 0;
+                margin-top: 60px;
+            }
+
+            & #code-2 {
+                position: absolute;
+                top: 40%;
+                right: -10%;
+            }
+
+            & #code-3 {
+                position: absolute;
+                top: 60%;
+                right: 10%;
+            }
+
+            & #code-4 {
+                position: absolute;
+                top: 60%;
+                left: -10%;
+            }
+
+            & #code-5 {
+                position: absolute;
+                top: 70%;
+                left: 30%;
+            }
+
+            & #code-6 {
+                position: absolute;
+                top: 20%;
+                left: 40%;
+            }
+        }
+    }
+        & .banner-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            @include transform-translate(-50%, -50%);
+
+           & h1, h2, h3 {
+                text-shadow: 0px 5px 1px $color-dark;
+            }
+
+            & h3 {
+                display: block;
+                opacity: 0;
+                transform: translateX(-200%);
+                animation: 0.8s linear forwards fadeIn;
+            }
+ 
+            & button {
+                margin-top: 20px;
+                border-color: $color-cyan;
+                background-color: $color-cyan-light;
+                color: $color-dark;
+                box-shadow: 0px 0px 3px $color-dark;
+
+                &:hover {
+                    background-color: $color-cyan;
+                }
+            }
+
+        }
+
+        & .waves {
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 100vw;
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2.3rem;
+    }
+
+    h3 {font-size: 1.8rem;}
+}
+
+
+@media screen and (max-width: 680px) {
+    .banner-title {
+        display: none;
+    }
+}
 
 
 // Animations
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-200%);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(5%);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
 
 @keyframes opacity {
     0% {

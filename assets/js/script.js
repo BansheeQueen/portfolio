@@ -18,5 +18,5 @@ $('.parrot-container').on('click', function() {
     $('.monitor-container').addClass('active');
   })
 
-  const parallax = document.querySelector('.monitor-container');
+  const parallax = document.querySelector('.parallax-scene');
   const parralaxInstance = new Parallax(parallax);
