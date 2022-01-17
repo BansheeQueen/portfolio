@@ -34,3 +34,4 @@ $('.navbar-toggle').on('click', function() {
 
   const parallax = document.querySelector('.parallax-scene');
   const parralaxInstance = new Parallax(parallax);
+
