@@ -35,3 +35,39 @@ $('.navbar-toggle').on('click', function() {
   const parallax = document.querySelector('.parallax-scene');
   const parralaxInstance = new Parallax(parallax);
 
+
+// // Animations on scroll
+const underlineWidth = (name) => {
+    let scroll = 0;
+    let precentage = 0;
+    if($(window).scrollTop() + $(window).height() > $(name).offset().top) {
+        scroll = $(window).scrollTop() + $(window).height()  - $(name).offset().top;
+        precentage = scroll / $(name).height() * 100;
+         $(name + ' .underline').css('width', precentage + "%");
+        }
+}
+
+$(window).on('scroll', function(){underlineWidth('.about')});
+$(window).on('scroll', function(){underlineWidth('.skills')});
+$(window).on('scroll', function(){underlineWidth('.portfolio')});
+
+
+$(window).on('scroll', function() {
+    
+    if($(window).scrollTop() + $(window).height() / 2 > $('.picture-container').offset().top) {
+    $('.picture-container .blob').css('transform', 'translate(0%, 0%)');
+    $('.picture-container').css('opacity', 1);
+    }
+
+    if($(window).scrollTop() + $(window).height() / 2 < $('.picture-container').offset().top) {
+        $('.picture-container .blob').css('transform', 'translate(200%, 0%)');
+        $('.picture-container').css('opacity', 0);
+        }
+
+
+
+});
+
+
+
+

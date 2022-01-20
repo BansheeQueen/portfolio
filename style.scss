@@ -17,7 +17,9 @@ $startIndex: 0;
 $li-num: 5; //change this for more menu li elements
 
 // fonts variables
-$font-sans: 'Open Sans', 'Verdana', sans-serif;
+$font-sans: 'Open Sans',
+'Verdana',
+sans-serif;
 
 /* Mixins */
 @mixin transition($style, $type, $time) {
@@ -82,11 +84,13 @@ $font-sans: 'Open Sans', 'Verdana', sans-serif;
     -o-animation-delay: calc(#{$time}/10);
 }
 
+
 body {
     padding: 0;
     margin: 0;
     font-size: 16px;
     font-family: $font-sans;
+    overflow-x: hidden;
 }
 
 /* Typography  */
@@ -105,7 +109,16 @@ h2 {
     font-size: 3rem;
     font-weight: 600;
     letter-spacing: 0.2rem;
-}
+
+& .underline {
+    content: '';
+    display: block;
+    width: 0%;
+    max-width: 100%;
+    height: 3px;
+    background: linear-gradient(100deg, $color-cyan-dark, $color-cyan-light);
+    border-radius: 20px;
+}}
 
 h3 {
     color: $color-light;
@@ -118,15 +131,20 @@ code {
     color: $color-blue;
 }
 
-// p {}
+p {
+    color: $color-dark;
+    font-size: 0.9rem;
+    line-height: 200%;
+}
 
 a {
     color: $color-cyan;
     @include transition(all, linear, 0.5s);
     text-decoration: none;
 
-    &:hover, :visited {
-        color:$color-cyan-dark;
+    &:hover,
+    :visited {
+        color: $color-cyan-dark;
     }
 }
 
@@ -159,7 +177,8 @@ header {
             height: 60px;
             z-index: 1;
 
-            & h1, h2 {
+            & h1,
+            h2 {
                 display: inline-block;
                 margin: 0px;
                 font-size: 0.8rem;
@@ -209,24 +228,24 @@ header {
 
             &.open {
                 span {
-                &:nth-child(1) {
-                    transform: rotate(45deg);
-                    top: -6px;
-                    left: 6px;
+                    &:nth-child(1) {
+                        transform: rotate(45deg);
+                        top: -6px;
+                        left: 6px;
 
-                }
+                    }
 
-                &:nth-child(2) {
-                    @include transform-translateX(200%, 1);
-                }
+                    &:nth-child(2) {
+                        @include transform-translateX(200%, 1);
+                    }
 
-                &:nth-child(3) {
-                    transform: rotate(-45deg);
-                    top: 5px;
-                    left: 5px;
+                    &:nth-child(3) {
+                        transform: rotate(-45deg);
+                        top: 5px;
+                        left: 5px;
+                    }
                 }
             }
-        }
         }
     }
 
@@ -351,7 +370,7 @@ ul {
     left: 0;
     right: 0;
     display: none;
-    background:rgba(72, 72, 72, 0.8);
+    background: rgba(72, 72, 72, 0.8);
     opacity: 0;
     @include transition(all, linear, 0.5s);
 
@@ -360,11 +379,11 @@ ul {
         opacity: 1;
 
         & .menu-box {
-                    transform: translateX(0%);
-        -webkit-transform: translateX(0%);
-        -moz-transform: translateX(0%);
-        -ms-transform: translateX(0%);
-        -o-transform: translateX(0%);
+            transform: translateX(0%);
+            -webkit-transform: translateX(0%);
+            -moz-transform: translateX(0%);
+            -ms-transform: translateX(0%);
+            -o-transform: translateX(0%);
         }
     }
 
@@ -381,28 +400,34 @@ ul {
 
         & .navigation {
             & .menu-item {
-                    display: inline-flex;
-                    padding: 4px;
-                    margin: 0;
-                    width: 100%;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                display: inline-flex;
+                padding: 4px;
+                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
                 & a {
                     color: $color-dark;
+
                     &:hover {
                         color: $color-cyan;
                     }
+
                     & .icon {
                         display: inline-block;
                         width: 30px;
                         font-size: 1.2rem;
-                        
-                    };
+
+                    }
+
+                    ;
                 }
- 
+
             }
 
-            & .indicator {display: none;}
+            & .indicator {
+                display: none;
+            }
         }
 
         &:after {
@@ -423,16 +448,23 @@ ul {
 }
 
 @media screen and (max-width: 680px) {
-header {
-    &.top-navigation {
-    & .navbar-toggle {display: block;}
-    & .nav-menu {display: none;}
-    & .mobile-banner-title {
-        display: block;
-    }
+    header {
+        &.top-navigation {
+            & .navbar-toggle {
+                display: block;
+            }
+
+            & .nav-menu {
+                display: none;
+            }
+
+            & .mobile-banner-title {
+                display: block;
+            }
+        }
     }
 }
-}
+
 //  Banner section
 section {
     &.banner {
@@ -443,55 +475,57 @@ section {
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
-        background-blend-mode:color-dodge; 
+        background-blend-mode: color-dodge;
         background-color: $color-dark;
 
         & .parallax-scene {
             width: 100%;
             height: 100vh;
             padding-top: 60px;
+
             & .code {
                 width: 100%;
                 height: 100vh;
 
-            & #code-1 {
-                position: absolute;
-                top: 20%;
-                left: 0;
-                margin-top: 60px;
-            }
+                & #code-1 {
+                    position: absolute;
+                    top: 20%;
+                    left: 0;
+                    margin-top: 60px;
+                }
 
-            & #code-2 {
-                position: absolute;
-                top: 40%;
-                right: -10%;
-            }
+                & #code-2 {
+                    position: absolute;
+                    top: 40%;
+                    right: -10%;
+                }
 
-            & #code-3 {
-                position: absolute;
-                top: 60%;
-                right: 10%;
-            }
+                & #code-3 {
+                    position: absolute;
+                    top: 60%;
+                    right: 10%;
+                }
 
-            & #code-4 {
-                position: absolute;
-                top: 60%;
-                left: -10%;
-            }
+                & #code-4 {
+                    position: absolute;
+                    top: 60%;
+                    left: -10%;
+                }
 
-            & #code-5 {
-                position: absolute;
-                top: 70%;
-                left: 30%;
-            }
+                & #code-5 {
+                    position: absolute;
+                    top: 70%;
+                    left: 30%;
+                }
 
-            & #code-6 {
-                position: absolute;
-                top: 20%;
-                left: 40%;
+                & #code-6 {
+                    position: absolute;
+                    top: 20%;
+                    left: 40%;
+                }
             }
         }
-    }
+
         & .banner-title {
             position: absolute;
             top: 50%;
@@ -500,7 +534,9 @@ section {
             @include transform-translate(-50%, -50%);
             z-index: 2;
 
-           & h1, h2, h3 {
+            & h1,
+            h2,
+            h3 {
                 text-shadow: 0px 5px 1px $color-dark;
             }
 
@@ -510,7 +546,7 @@ section {
                 transform: translateX(-200%);
                 animation: 0.8s linear forwards fadeIn;
             }
- 
+
             & button {
                 margin-top: 20px;
                 border-color: $color-cyan;
@@ -529,7 +565,7 @@ section {
             position: absolute;
             left: 0;
             bottom: -15px;
-            width: 100vw;
+            width: 100%;
         }
     }
 }
@@ -543,7 +579,9 @@ section {
         font-size: 2.3rem;
     }
 
-    h3 {font-size: 1.8rem;}
+    h3 {
+        font-size: 1.8rem;
+    }
 }
 
 
@@ -553,6 +591,77 @@ section {
     }
 }
 
+// About me section
+section {
+    &.about {
+        margin-top: 60px;
+
+        & h2 {
+            display: inline-block;
+            & .underline {
+                content: '';
+                display: block;
+                width: 0%;
+                max-width: 100%;
+                height: 3px;
+                background: linear-gradient(100deg, $color-cyan-dark, $color-cyan-light);
+                border-radius: 20px;
+            }
+        }
+
+        & .picture-container {
+            position: relative;
+            top: -20px;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            background: $color-light;
+            border-radius: 50%;
+            box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            @include transition(all, linear, 0.5s);
+
+            & .about-me-picture {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                padding: 5px 0px;
+                border-radius: 50%;
+            }
+
+            & .blob {
+                    position: absolute;
+                    bottom: -40px;
+                    left: -5vw;
+                    width: 35vw;
+                    z-index: -1;
+                    @include transform-translate(200%, 0%);
+                    @include transition(all, linear, 0.5s);
+            }
+
+        }
+
+    }
+}
+
+
+// Skills
+section {
+    &.skills {
+        & h2 {
+            display: inline-block;
+        }
+    }
+}
+
+// Portfolio
+section {
+    &.portfolio {
+        & h2 {
+            display: inline-block;
+        }
+    }
+}
 
 // Animations
 
