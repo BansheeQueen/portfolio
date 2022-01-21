@@ -20,7 +20,7 @@ h1 {
 }
 
 h2 {
-  color: #99D9D6;
+  color: #4E4B4B;
   font-size: 3rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
@@ -34,6 +34,11 @@ h2 .underline {
   height: 3px;
   background: linear-gradient(100deg, #345856, #99D9D6);
   border-radius: 20px;
+  transition: all linear 0.2s;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -ms-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
 }
 
 h3 {
@@ -590,6 +595,10 @@ section.banner .banner-title h3 {
   text-shadow: 0px 5px 1px #4E4B4B;
 }
 
+section.banner .banner-title h2 {
+  color: #99D9D6;
+}
+
 section.banner .banner-title h3 {
   display: block;
   opacity: 0;
@@ -654,13 +663,7 @@ section.about h2 .underline {
 
 section.about .picture-container {
   position: relative;
-  top: -20px;
   width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-  background: #EDEDED;
-  border-radius: 50%;
-  box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: all linear 0.5s;
   -webkit-transition: all linear 0.5s;
@@ -669,7 +672,16 @@ section.about .picture-container {
   -o-transition: all linear 0.5s;
 }
 
-section.about .picture-container .about-me-picture {
+section.about .picture-container .picture-bg {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background: #EDEDED;
+  border-radius: 50%;
+  box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+section.about .picture-container .picture-bg .about-me-picture {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -683,16 +695,12 @@ section.about .picture-container .blob {
   left: -5vw;
   width: 35vw;
   z-index: -1;
-  transform: translate(200%, 0%);
-  -webkit-transform: translate(200%, 0%);
-  -moz-transform: translate(200%, 0%);
-  -ms-transform: translate(200%, 0%);
-  -o-transform: translate(200%, 0%);
-  transition: all linear 0.5s;
-  -webkit-transition: all linear 0.5s;
-  -moz-transition: all linear 0.5s;
-  -ms-transition: all linear 0.5s;
-  -o-transition: all linear 0.5s;
+  opacity: 0.6;
+  transition: all linear 0.8s;
+  -webkit-transition: all linear 0.8s;
+  -moz-transition: all linear 0.8s;
+  -ms-transition: all linear 0.8s;
+  -o-transition: all linear 0.8s;
 }
 
 section.skills h2 {

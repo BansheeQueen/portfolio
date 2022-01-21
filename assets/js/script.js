@@ -43,7 +43,7 @@ const underlineWidth = (name) => {
     if($(window).scrollTop() + $(window).height() > $(name).offset().top) {
         scroll = $(window).scrollTop() + $(window).height()  - $(name).offset().top;
         precentage = scroll / $(name).height() * 100;
-         $(name + ' .underline').css('width', precentage + "%");
+         $(name + ' .underline').css('width',  precentage + "%");
         }
 }
 
@@ -54,14 +54,16 @@ $(window).on('scroll', function(){underlineWidth('.portfolio')});
 
 $(window).on('scroll', function() {
     
-    if($(window).scrollTop() + $(window).height() / 2 > $('.picture-container').offset().top) {
-    $('.picture-container .blob').css('transform', 'translate(0%, 0%)');
+    if($(window).scrollTop() + $(window).height() / 1.25 > $('.picture-container').offset().top) {
+    $('.picture-container').css('transform', 'translate(0%, 0%)');
     $('.picture-container').css('opacity', 1);
+    $('.picture-container .blob').css('transform', 'translate(0%, 0%)');
     }
 
-    if($(window).scrollTop() + $(window).height() / 2 < $('.picture-container').offset().top) {
-        $('.picture-container .blob').css('transform', 'translate(200%, 0%)');
+    if($(window).scrollTop() + $(window).height()  < $('.picture-container').offset().top) {
+        $('.picture-container').css('transform', 'translate(10%, 0%)');
         $('.picture-container').css('opacity', 0);
+        $('.picture-container .blob').css('transform', 'translate(40%, 0%)');
         }
 
 
