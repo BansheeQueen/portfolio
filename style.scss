@@ -110,16 +110,17 @@ h2 {
     font-weight: 600;
     letter-spacing: 0.2rem;
 
-& .underline {
-    content: '';
-    display: block;
-    width: 0%;
-    max-width: 100%;
-    height: 3px;
-    background: linear-gradient(100deg, $color-cyan-dark, $color-cyan-light);
-    border-radius: 20px;
-    @include transition(all, linear, 0.2s);
-}}
+    & .underline {
+        content: '';
+        display: block;
+        width: 0%;
+        max-width: 100%;
+        height: 3px;
+        background: linear-gradient(100deg, $color-cyan-dark, $color-cyan-light);
+        border-radius: 20px;
+        @include transition(all, linear, 0.2s);
+    }
+}
 
 h3 {
     color: $color-light;
@@ -605,6 +606,7 @@ section {
 
         & h2 {
             display: inline-block;
+
             & .underline {
                 content: '';
                 display: block;
@@ -630,21 +632,23 @@ section {
                 border-radius: 50%;
                 box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.3);
 
-            & .about-me-picture {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                padding: 5px 0px;
-                border-radius: 50%;
-            }}
-            & .blob {
+                & .about-me-picture {
                     position: absolute;
-                    bottom: -40px;
-                    left: -5vw;
-                    width: 35vw;
-                    z-index: -1;
-                    opacity: 0.6;
-                    @include transition(all, linear, 0.8s);
+                    bottom: 0;
+                    width: 100%;
+                    padding: 5px 0px;
+                    border-radius: 50%;
+                }
+            }
+
+            & .blob {
+                position: absolute;
+                bottom: -40px;
+                left: -5vw;
+                width: 35vw;
+                z-index: -1;
+                opacity: 0.6;
+                @include transition(all, linear, 0.8s);
             }
 
         }
@@ -652,6 +656,52 @@ section {
     }
 }
 
+@media screen and (max-width: 980px) {
+    section {
+        &.about {
+            & .picture-container {
+                & .blob {
+                    width: 45vw;
+                }
+
+            }
+
+        }
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    section {
+        &.about {
+            & .picture-container {
+                & .blob {
+                    width: 50vw;
+                }
+
+            }
+
+        }
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    section {
+        &.about {
+            & .picture-container {
+                margin: 50px auto;
+                width: 50%;
+                & .blob {
+                    width: 60vw;
+                }
+
+            }
+
+        }
+    }
+
+}
 
 // Skills
 section {

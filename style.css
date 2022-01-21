@@ -703,6 +703,28 @@ section.about .picture-container .blob {
   -o-transition: all linear 0.8s;
 }
 
+@media screen and (max-width: 980px) {
+  section.about .picture-container .blob {
+    width: 45vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  section.about .picture-container .blob {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  section.about .picture-container {
+    margin: 50px auto;
+    width: 50%;
+  }
+  section.about .picture-container .blob {
+    width: 60vw;
+  }
+}
+
 section.skills h2 {
   display: inline-block;
 }
