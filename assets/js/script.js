@@ -70,6 +70,20 @@ $(window).on('scroll', function() {
 
 });
 
+$(window).on('scroll', function() {
+    
+    if($(window).scrollTop() + $(window).height() / 2 > $('.skills-container').offset().top) {
+    $('.skills-container').css('opacity', 1);
+    }
+
+    if($(window).scrollTop() + $(window).height()  < $('.skills-container').offset().top) {
+        $('.skills-container').css('opacity', 0);
+        }
+
+
+
+});
+
 
 
 

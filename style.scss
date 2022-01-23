@@ -644,8 +644,9 @@ section {
             & .blob {
                 position: absolute;
                 bottom: -40px;
-                left: -5vw;
+                left: -5%;
                 width: 35vw;
+                max-width: 450px;
                 z-index: -1;
                 opacity: 0.6;
                 @include transition(all, linear, 0.8s);
@@ -692,6 +693,7 @@ section {
             & .picture-container {
                 margin: 50px auto;
                 width: 50%;
+
                 & .blob {
                     width: 60vw;
                 }
@@ -706,10 +708,53 @@ section {
 // Skills
 section {
     &.skills {
+        margin: 80px 0;
         & h2 {
             display: inline-block;
         }
+
+        & .skills-container {
+            opacity: 0;
+            @include transition(all, linear, 0.5s);
+
+        & .skill-container {
+            padding: 50px;
+            font-size: 5rem;
+            @include transition(all, linear, 0.5s);
+            overflow: hidden;
+
+            & i {
+                background: linear-gradient(45deg, $color-cyan-light, $color-cyan-dark);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -moz-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                @include transition(all, linear, 0.3s);
+
+            }
+
+            & p {
+                font-size: 1rem;
+                color: $color-dark;
+                text-align: center;
+                font-weight: 600;
+                @include transform-translateY(500%);
+                @include transition(all, linear, 0.3s);
+
+            }
+
+            &:hover {
+                & i {
+                    @include transform-translateY(5px);
+                }
+
+                & p {
+                    @include transform-translateY(-5px);
+                }
+            }
+        }
     }
+}
 }
 
 // Portfolio
