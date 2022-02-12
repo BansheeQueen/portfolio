@@ -8,12 +8,12 @@ $color-cyan-light: #99D9D6;
 $color-dark: #4E4B4B;
 $color-blue: #9CDCFE;
 
-//indicator movment variables
+//indicator movement variables
 $li-width: 60px;
 $li-height: 60px;
 $li-margin: 8px;
 $li-translate: 0 -$li-width - $li-margin*2;
-$startIndex: 0;
+$startIndex: 0; //indicates at which menu button indicator starts on page refresh. When set to 0 it's deafult is the first left
 $li-num: 5; //change this for more menu li elements
 
 // fonts variables
@@ -110,7 +110,7 @@ h2 {
     font-weight: 600;
     letter-spacing: 0.2rem;
 
-    & .underline {
+    .underline {
         content: '';
         display: block;
         width: 0%;
@@ -169,88 +169,87 @@ header {
         padding: 0px;
         background: $color-light;
         z-index: 3;
+    }
+}
 
-        & .mobile-banner-title {
-            position: fixed;
-            display: none;
-            top: 8px;
-            left: 20px;
-            right: 50px;
-            height: 60px;
-            z-index: 1;
+.mobile-banner-title {
+    position: fixed;
+    display: none;
+    top: 8px;
+    left: 20px;
+    right: 50px;
+    height: 60px;
+    z-index: 1;
 
-            & h1,
-            h2 {
-                display: inline-block;
-                margin: 0px;
-                font-size: 0.8rem;
-                color: $color-cyan;
-                text-transform: none;
-            }
+    h1,
+    h2 {
+        display: inline-block;
+        margin: 0px;
+        font-size: 0.8rem;
+        color: $color-cyan;
+        text-transform: none;
+    }
 
-            & h3 {
-                font-size: 0.8rem;
-                color: $color-dark;
-            }
+    h3 {
+        font-size: 0.8rem;
+        color: $color-dark;
+    }
 
-            & button {
-                position: absolute;
-                top: 8px;
-                left: 250px;
-                font-size: 0.8rem;
-                border-color: $color-cyan;
-                background-color: $color-cyan-light;
-                color: $color-dark;
-                box-shadow: 0px 0px 5px rgba(72, 72, 72, 0.6);
-                z-index: 10;
+    button {
+        position: absolute;
+        top: 8px;
+        left: 250px;
+        font-size: 0.8rem;
+        border-color: $color-cyan;
+        background-color: $color-cyan-light;
+        color: $color-dark;
+        box-shadow: 0px 0px 5px rgba(72, 72, 72, 0.6);
+        z-index: 10;
 
-                &:hover {
-                    background-color: $color-cyan;
-                }
-            }
+        &:hover {
+            background-color: $color-cyan;
         }
+    }
+}
 
-        & .navbar-toggle {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            display: none;
-            z-index: 4;
+.navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: none;
+    z-index: 4;
 
-            & span {
-                position: relative;
-                display: block;
-                margin: 4px;
-                width: 35px;
-                height: 3px;
-                background: $color-dark;
-                transform-origin: left center;
-                @include transition(all, linear, 0.3s);
+    span {
+        position: relative;
+        display: block;
+        margin: 4px;
+        width: 35px;
+        height: 3px;
+        background: $color-dark;
+        transform-origin: left center;
+        @include transition(all, linear, 0.3s);
+    }
+
+    &.open {
+        span {
+            &:nth-child(1) {
+                transform: rotate(45deg);
+                top: -6px;
+                left: 6px;
+
             }
 
-            &.open {
-                span {
-                    &:nth-child(1) {
-                        transform: rotate(45deg);
-                        top: -6px;
-                        left: 6px;
+            &:nth-child(2) {
+                @include transform-translateX(200%, 1);
+            }
 
-                    }
-
-                    &:nth-child(2) {
-                        @include transform-translateX(200%, 1);
-                    }
-
-                    &:nth-child(3) {
-                        transform: rotate(-45deg);
-                        top: 5px;
-                        left: 5px;
-                    }
-                }
+            &:nth-child(3) {
+                transform: rotate(-45deg);
+                top: 5px;
+                left: 5px;
             }
         }
     }
-
 }
 
 
@@ -281,7 +280,7 @@ ul {
                 @include transition(all, linear, 0.5s);
 
 
-                & .icon {
+                .icon {
                     position: relative;
                     display: block;
                     line-height: 65px;
@@ -289,7 +288,7 @@ ul {
                     @include transition(all, linear, 0.5s);
                 }
 
-                & .text {
+                .text {
                     position: absolute;
                     background: $color-cyan;
                     color: $color-light;
@@ -314,21 +313,25 @@ ul {
 
             &.active {
                 a {
-                    & .icon {
+                    .icon {
                         color: $color-cyan;
                         @include transform-translateY(32px);
 
                     }
 
-                    & .text {
+                    .text {
                         opacity: 1;
                         @include transform-translateY(0px);
                     }
                 }
             }
         }
+    }
+}
 
-        & .indicator {
+ul {
+    &.top-menu {
+        .indicator {
             position: absolute;
             top: 50%;
             width: calc(#{$li-width} + 10px);
@@ -352,6 +355,8 @@ ul {
     }
 }
 
+
+// Function for movement animation of indicator. 
 @for $i from $startIndex through $li-num {
     #item-#{$i} {
         @include animation-delay(#{$i}s);
@@ -380,7 +385,7 @@ ul {
         display: block;
         opacity: 1;
 
-        & .menu-box {
+        .menu-box {
             transform: translateX(0%);
             -webkit-transform: translateX(0%);
             -moz-transform: translateX(0%);
@@ -389,7 +394,7 @@ ul {
         }
     }
 
-    & .menu-box {
+    .menu-box {
         float: right;
         width: 40%;
         max-width: 300px;
@@ -400,22 +405,22 @@ ul {
         @include transform-translateX(300%, 1);
         @include transition(all, linear, 0.5s);
 
-        & .navigation {
-            & .menu-item {
+        .navigation {
+            .menu-item {
                 display: inline-flex;
                 padding: 4px;
                 margin: 0;
                 width: 100%;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
-                & a {
+                a {
                     color: $color-dark;
 
                     &:hover {
                         color: $color-cyan;
                     }
 
-                    & .icon {
+                    .icon {
                         display: inline-block;
                         width: 30px;
                         font-size: 1.2rem;
@@ -427,7 +432,7 @@ ul {
 
             }
 
-            & .indicator {
+            .indicator {
                 display: none;
             }
         }
@@ -452,15 +457,15 @@ ul {
 @media screen and (max-width: 680px) {
     header {
         &.top-navigation {
-            & .navbar-toggle {
+            .navbar-toggle {
                 display: block;
             }
 
-            & .nav-menu {
+            .nav-menu {
                 display: none;
             }
 
-            & .mobile-banner-title {
+            .mobile-banner-title {
                 display: block;
             }
         }
@@ -479,102 +484,103 @@ section {
         background-attachment: fixed;
         background-blend-mode: color-dodge;
         background-color: $color-dark;
+    }
+}
 
-        & .parallax-scene {
-            width: 100%;
-            height: 100vh;
-            padding-top: 60px;
+.parallax-scene {
+    width: 100%;
+    height: 100vh;
+    padding-top: 60px;
 
-            & .code {
-                width: 100%;
-                height: 100vh;
+    .code {
+        width: 100%;
+        height: 100vh;
 
-                & #code-1 {
-                    position: absolute;
-                    top: 20%;
-                    left: 0;
-                    margin-top: 60px;
-                }
-
-                & #code-2 {
-                    position: absolute;
-                    top: 40%;
-                    right: -10%;
-                }
-
-                & #code-3 {
-                    position: absolute;
-                    top: 60%;
-                    right: 10%;
-                }
-
-                & #code-4 {
-                    position: absolute;
-                    top: 60%;
-                    left: -10%;
-                }
-
-                & #code-5 {
-                    position: absolute;
-                    top: 70%;
-                    left: 30%;
-                }
-
-                & #code-6 {
-                    position: absolute;
-                    top: 20%;
-                    left: 40%;
-                }
-            }
-        }
-
-        & .banner-title {
+        #code-1 {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            text-align: center;
-            @include transform-translate(-50%, -50%);
-            z-index: 2;
-
-            & h1,
-            h2,
-            h3 {
-                text-shadow: 0px 5px 1px $color-dark;
-            }
-
-            & h2 {
-                color: $color-cyan-light;
-            }
-
-            & h3 {
-                display: block;
-                opacity: 0;
-                transform: translateX(-200%);
-                animation: 0.8s linear forwards fadeIn;
-            }
-
-            & button {
-                margin-top: 20px;
-                border-color: $color-cyan;
-                background-color: $color-cyan-light;
-                color: $color-dark;
-                box-shadow: 0px 0px 3px $color-dark;
-
-                &:hover {
-                    background-color: $color-cyan;
-                }
-            }
-
-        }
-
-        & .waves {
-            position: absolute;
+            top: 20%;
             left: 0;
-            bottom: -15px;
-            width: 100%;
+            margin-top: 60px;
+        }
+
+        #code-2 {
+            position: absolute;
+            top: 40%;
+            right: -10%;
+        }
+
+        #code-3 {
+            position: absolute;
+            top: 60%;
+            right: 10%;
+        }
+
+        #code-4 {
+            position: absolute;
+            top: 60%;
+            left: -10%;
+        }
+
+        #code-5 {
+            position: absolute;
+            top: 70%;
+            left: 30%;
+        }
+
+        & #code-6 {
+            position: absolute;
+            top: 20%;
+            left: 40%;
         }
     }
 }
+
+.banner-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    @include transform-translate(-50%, -50%);
+    z-index: 2;
+
+    h1,
+    h2,
+    h3 {
+        text-shadow: 0px 5px 1px $color-dark;
+    }
+
+    h2 {
+        color: $color-cyan-light;
+    }
+
+    h3 {
+        display: block;
+        opacity: 0;
+        transform: translateX(-200%);
+        animation: 0.8s linear forwards fadeIn;
+    }
+
+    button {
+        margin-top: 20px;
+        border-color: $color-cyan;
+        background-color: $color-cyan-light;
+        color: $color-dark;
+        box-shadow: 0px 0px 3px $color-dark;
+
+        &:hover {
+            background-color: $color-cyan;
+        }
+    }
+
+}
+
+.waves {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    width: 100%;
+}
+
 
 @media screen and (max-width: 960px) {
     h1 {
@@ -604,10 +610,10 @@ section {
     &.about {
         margin-top: 60px;
 
-        & h2 {
+        h2 {
             display: inline-block;
 
-            & .underline {
+            .underline {
                 content: '';
                 display: block;
                 width: 0%;
@@ -617,90 +623,81 @@ section {
                 border-radius: 20px;
             }
         }
-
-        & .picture-container {
-            position: relative;
-            width: 100%;
-            opacity: 0;
-            @include transition(all, linear, 0.5s);
-
-            & .picture-bg {
-                width: 100%;
-                height: 0;
-                padding-bottom: 100%;
-                background: $color-light;
-                border-radius: 50%;
-                box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.3);
-
-                & .about-me-picture {
-                    position: absolute;
-                    bottom: 0;
-                    width: 100%;
-                    padding: 5px 0px;
-                    border-radius: 50%;
-                }
-            }
-
-            & .blob {
-                position: absolute;
-                bottom: -40px;
-                left: -5%;
-                width: 35vw;
-                max-width: 450px;
-                z-index: -1;
-                opacity: 0.6;
-                @include transition(all, linear, 0.8s);
-            }
-
-        }
-
     }
 }
+
+.picture-container {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    @include transition(all, linear, 0.5s);
+
+    .picture-bg {
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+        background: $color-light;
+        border-radius: 50%;
+        box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.3);
+
+        & .about-me-picture {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 5px 0px;
+            border-radius: 50%;
+        }
+    }
+
+    .blob {
+        position: absolute;
+        bottom: -40px;
+        left: -5%;
+        width: 35vw;
+        max-width: 450px;
+        z-index: -1;
+        opacity: 0.6;
+        @include transition(all, linear, 0.8s);
+    }
+
+}
+
+
 
 @media screen and (max-width: 980px) {
-    section {
-        &.about {
-            & .picture-container {
-                & .blob {
-                    width: 45vw;
-                }
 
-            }
-
+    .picture-container {
+        .blob {
+            width: 45vw;
         }
+
     }
 
 }
+
 
 @media screen and (max-width: 800px) {
-    section {
-        &.about {
-            & .picture-container {
-                & .blob {
-                    width: 50vw;
-                }
 
-            }
-
+    .picture-container {
+        .blob {
+            width: 50vw;
         }
+
     }
 
 }
 
+
 @media screen and (max-width: 750px) {
-    section {
-        &.about {
-            & .picture-container {
-                margin: 50px auto;
-                width: 50%;
 
-                & .blob {
-                    width: 60vw;
-                }
+    .picture-container {
+        margin: 50px auto;
+        width: 50%;
 
-            }
-
+        .blob {
+            width: 60vw;
         }
+
     }
 
 }
@@ -709,58 +706,59 @@ section {
 section {
     &.skills {
         margin: 80px 0;
-        & h2 {
+
+        h2 {
             display: inline-block;
-        }
-
-        & .skills-container {
-            opacity: 0;
-            @include transition(all, linear, 0.5s);
-
-        & .skill-container {
-            padding: 50px;
-            font-size: 5rem;
-            @include transition(all, linear, 0.5s);
-            overflow: hidden;
-
-            & i {
-                background: linear-gradient(45deg, $color-cyan-light, $color-cyan-dark);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -moz-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                @include transition(all, linear, 0.3s);
-
-            }
-
-            & p {
-                font-size: 1rem;
-                color: $color-dark;
-                text-align: center;
-                font-weight: 600;
-                @include transform-translateY(500%);
-                @include transition(all, linear, 0.3s);
-
-            }
-
-            &:hover {
-                & i {
-                    @include transform-translateY(5px);
-                }
-
-                & p {
-                    @include transform-translateY(-5px);
-                }
-            }
         }
     }
 }
+
+.skills-container {
+    opacity: 0;
+    @include transition(all, linear, 0.5s);
+
+    .skill-container {
+        padding: 50px;
+        font-size: 5rem;
+        @include transition(all, linear, 0.5s);
+        overflow: hidden;
+
+        i {
+            background: linear-gradient(45deg, $color-cyan-light, $color-cyan-dark);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            @include transition(all, linear, 0.3s);
+
+        }
+
+        p {
+            font-size: 1rem;
+            color: $color-dark;
+            text-align: center;
+            font-weight: 600;
+            @include transform-translateY(500%);
+            @include transition(all, linear, 0.3s);
+
+        }
+
+        &:hover {
+            i {
+                @include transform-translateY(5px);
+            }
+
+            p {
+                @include transform-translateY(-5px);
+            }
+        }
+    }
 }
 
 // Portfolio
 section {
     &.portfolio {
-        & h2 {
+        h2 {
             display: inline-block;
         }
     }

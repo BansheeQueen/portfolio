@@ -89,7 +89,7 @@ header.top-navigation {
   z-index: 3;
 }
 
-header.top-navigation .mobile-banner-title {
+.mobile-banner-title {
   position: fixed;
   display: none;
   top: 8px;
@@ -99,8 +99,8 @@ header.top-navigation .mobile-banner-title {
   z-index: 1;
 }
 
-header.top-navigation .mobile-banner-title h1,
-header.top-navigation .mobile-banner-title h2 {
+.mobile-banner-title h1,
+.mobile-banner-title h2 {
   display: inline-block;
   margin: 0px;
   font-size: 0.8rem;
@@ -108,12 +108,12 @@ header.top-navigation .mobile-banner-title h2 {
   text-transform: none;
 }
 
-header.top-navigation .mobile-banner-title h3 {
+.mobile-banner-title h3 {
   font-size: 0.8rem;
   color: #4E4B4B;
 }
 
-header.top-navigation .mobile-banner-title button {
+.mobile-banner-title button {
   position: absolute;
   top: 8px;
   left: 250px;
@@ -125,11 +125,11 @@ header.top-navigation .mobile-banner-title button {
   z-index: 10;
 }
 
-header.top-navigation .mobile-banner-title button:hover {
+.mobile-banner-title button:hover {
   background-color: #69B0AC;
 }
 
-header.top-navigation .navbar-toggle {
+.navbar-toggle {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -137,7 +137,7 @@ header.top-navigation .navbar-toggle {
   z-index: 4;
 }
 
-header.top-navigation .navbar-toggle span {
+.navbar-toggle span {
   position: relative;
   display: block;
   margin: 4px;
@@ -152,13 +152,13 @@ header.top-navigation .navbar-toggle span {
   -o-transition: all linear 0.3s;
 }
 
-header.top-navigation .navbar-toggle.open span:nth-child(1) {
+.navbar-toggle.open span:nth-child(1) {
   transform: rotate(45deg);
   top: -6px;
   left: 6px;
 }
 
-header.top-navigation .navbar-toggle.open span:nth-child(2) {
+.navbar-toggle.open span:nth-child(2) {
   transform: translateX(calc(200% * 1));
   -webkit-transform: translateX(calc(200% * 1));
   -moz-transform: translateX(calc(200% * 1));
@@ -166,7 +166,7 @@ header.top-navigation .navbar-toggle.open span:nth-child(2) {
   -o-transform: translateX(calc(200% * 1));
 }
 
-header.top-navigation .navbar-toggle.open span:nth-child(3) {
+.navbar-toggle.open span:nth-child(3) {
   transform: rotate(-45deg);
   top: 5px;
   left: 5px;
@@ -528,55 +528,55 @@ section.banner {
   background-color: #4E4B4B;
 }
 
-section.banner .parallax-scene {
+.parallax-scene {
   width: 100%;
   height: 100vh;
   padding-top: 60px;
 }
 
-section.banner .parallax-scene .code {
+.parallax-scene .code {
   width: 100%;
   height: 100vh;
 }
 
-section.banner .parallax-scene .code #code-1 {
+.parallax-scene .code #code-1 {
   position: absolute;
   top: 20%;
   left: 0;
   margin-top: 60px;
 }
 
-section.banner .parallax-scene .code #code-2 {
+.parallax-scene .code #code-2 {
   position: absolute;
   top: 40%;
   right: -10%;
 }
 
-section.banner .parallax-scene .code #code-3 {
+.parallax-scene .code #code-3 {
   position: absolute;
   top: 60%;
   right: 10%;
 }
 
-section.banner .parallax-scene .code #code-4 {
+.parallax-scene .code #code-4 {
   position: absolute;
   top: 60%;
   left: -10%;
 }
 
-section.banner .parallax-scene .code #code-5 {
+.parallax-scene .code #code-5 {
   position: absolute;
   top: 70%;
   left: 30%;
 }
 
-section.banner .parallax-scene .code #code-6 {
+.parallax-scene .code #code-6 {
   position: absolute;
   top: 20%;
   left: 40%;
 }
 
-section.banner .banner-title {
+.banner-title {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -589,24 +589,24 @@ section.banner .banner-title {
   z-index: 2;
 }
 
-section.banner .banner-title h1,
-section.banner .banner-title h2,
-section.banner .banner-title h3 {
+.banner-title h1,
+.banner-title h2,
+.banner-title h3 {
   text-shadow: 0px 5px 1px #4E4B4B;
 }
 
-section.banner .banner-title h2 {
+.banner-title h2 {
   color: #99D9D6;
 }
 
-section.banner .banner-title h3 {
+.banner-title h3 {
   display: block;
   opacity: 0;
   transform: translateX(-200%);
   animation: 0.8s linear forwards fadeIn;
 }
 
-section.banner .banner-title button {
+.banner-title button {
   margin-top: 20px;
   border-color: #69B0AC;
   background-color: #99D9D6;
@@ -614,11 +614,11 @@ section.banner .banner-title button {
   box-shadow: 0px 0px 3px #4E4B4B;
 }
 
-section.banner .banner-title button:hover {
+.banner-title button:hover {
   background-color: #69B0AC;
 }
 
-section.banner .waves {
+.waves {
   position: absolute;
   left: 0;
   bottom: -15px;
@@ -661,7 +661,7 @@ section.about h2 .underline {
   border-radius: 20px;
 }
 
-section.about .picture-container {
+.picture-container {
   position: relative;
   width: 100%;
   opacity: 0;
@@ -672,7 +672,7 @@ section.about .picture-container {
   -o-transition: all linear 0.5s;
 }
 
-section.about .picture-container .picture-bg {
+.picture-container .picture-bg {
   width: 100%;
   height: 0;
   padding-bottom: 100%;
@@ -681,7 +681,7 @@ section.about .picture-container .picture-bg {
   box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.3);
 }
 
-section.about .picture-container .picture-bg .about-me-picture {
+.picture-container .picture-bg .about-me-picture {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -689,7 +689,7 @@ section.about .picture-container .picture-bg .about-me-picture {
   border-radius: 50%;
 }
 
-section.about .picture-container .blob {
+.picture-container .blob {
   position: absolute;
   bottom: -40px;
   left: -5%;
@@ -705,23 +705,23 @@ section.about .picture-container .blob {
 }
 
 @media screen and (max-width: 980px) {
-  section.about .picture-container .blob {
+  .picture-container .blob {
     width: 45vw;
   }
 }
 
 @media screen and (max-width: 800px) {
-  section.about .picture-container .blob {
+  .picture-container .blob {
     width: 50vw;
   }
 }
 
 @media screen and (max-width: 750px) {
-  section.about .picture-container {
+  .picture-container {
     margin: 50px auto;
     width: 50%;
   }
-  section.about .picture-container .blob {
+  .picture-container .blob {
     width: 60vw;
   }
 }
@@ -734,7 +734,7 @@ section.skills h2 {
   display: inline-block;
 }
 
-section.skills .skills-container {
+.skills-container {
   opacity: 0;
   transition: all linear 0.5s;
   -webkit-transition: all linear 0.5s;
@@ -743,7 +743,7 @@ section.skills .skills-container {
   -o-transition: all linear 0.5s;
 }
 
-section.skills .skills-container .skill-container {
+.skills-container .skill-container {
   padding: 50px;
   font-size: 5rem;
   transition: all linear 0.5s;
@@ -754,7 +754,7 @@ section.skills .skills-container .skill-container {
   overflow: hidden;
 }
 
-section.skills .skills-container .skill-container i {
+.skills-container .skill-container i {
   background: linear-gradient(45deg, #99D9D6, #345856);
   background-clip: text;
   -webkit-background-clip: text;
@@ -767,7 +767,7 @@ section.skills .skills-container .skill-container i {
   -o-transition: all linear 0.3s;
 }
 
-section.skills .skills-container .skill-container p {
+.skills-container .skill-container p {
   font-size: 1rem;
   color: #4E4B4B;
   text-align: center;
@@ -784,7 +784,7 @@ section.skills .skills-container .skill-container p {
   -o-transition: all linear 0.3s;
 }
 
-section.skills .skills-container .skill-container:hover i {
+.skills-container .skill-container:hover i {
   transform: translateY(5px);
   -webkit-transform: translateY(5px);
   -moz-transform: translateY(5px);
@@ -792,7 +792,7 @@ section.skills .skills-container .skill-container:hover i {
   -o-transform: translateY(5px);
 }
 
-section.skills .skills-container .skill-container:hover p {
+.skills-container .skill-container:hover p {
   transform: translateY(-5px);
   -webkit-transform: translateY(-5px);
   -moz-transform: translateY(-5px);
