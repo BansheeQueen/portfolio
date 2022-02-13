@@ -8,13 +8,16 @@ $color-cyan-light: #99D9D6;
 $color-dark: #4E4B4B;
 $color-blue: #9CDCFE;
 
-//indicator movement variables
-$li-width: 60px;
-$li-height: 60px;
-$li-margin: 8px;
-$li-translate: 0 -$li-width - $li-margin*2;
+//indicator movement variables, it allows easy styling modifications of main menu indicator
+$li-width: 60px; //each li's width
+$li-height: 60px; // each li's margin
+$li-margin: 8px; // each li's margin
+$li-translate: 0 -$li-width - $li-margin*2; //math for indicator movement when li is clicked
 $startIndex: 0; //indicates at which menu button indicator starts on page refresh. When set to 0 it's deafult is the first left
 $li-num: 5; //change this for more menu li elements
+
+// Skill number variable, change it if you want to add more skills. It vary correct behavoiur of skill fade in animation.
+$skill-num: 10;
 
 // fonts variables
 $font-sans: 'Open Sans',
@@ -22,6 +25,8 @@ $font-sans: 'Open Sans',
 sans-serif;
 
 /* Mixins */
+
+// Mixin with transition prefixes 
 @mixin transition($style, $type, $time) {
     transition: $style $type $time;
     -webkit-transition: $style $type $time;
@@ -30,6 +35,8 @@ sans-serif;
     -o-transition: $style $type $time;
 }
 
+
+// Mixin for transform Y with prefixes
 @mixin transform-translateY($deg) {
     transform: translateY($deg);
     -webkit-transform: translateY($deg);
@@ -38,6 +45,7 @@ sans-serif;
     -o-transform: translateY($deg);
 }
 
+// Mixin for transform X  with prefixes
 @mixin transform-translateX($deg, $multiply: 1) {
     transform: translateX(calc(#{$deg} * #{$multiply}));
     -webkit-transform: translateX(calc(#{$deg} * #{$multiply}));
@@ -47,6 +55,7 @@ sans-serif;
 }
 
 
+// Mixin for transform (both ways) with prefixes
 @mixin transform-translate($deg1, $deg2) {
     transform: translate($deg1, $deg2);
     -webkit-transform: translate($deg1, $deg2);
@@ -56,6 +65,7 @@ sans-serif;
 }
 
 
+// Mixin for border radius prefixes
 @mixin border-radius($radius) {
     border-radius: $radius;
     -webkit-border-radius: $radius;
@@ -64,6 +74,10 @@ sans-serif;
     -o-border-radius: $radius;
 }
 
+
+/*
+Mixin for main menu indicator styling. It depending completely on declared variables and set correct values even when menu styling is changed.
+*/
 @mixin indicator-selector($shadow-offset-x, $shadow-offset-y) {
     content: '';
     position: absolute;
@@ -76,6 +90,7 @@ sans-serif;
 
 }
 
+// Mixin for animation delay prefixes
 @mixin animation-delay($time) {
     animation-delay: calc(#{$time}/10);
     -webkit-animation-delay: calc(#{$time}/10);
@@ -83,6 +98,32 @@ sans-serif;
     -ms-animation-delay: calc(#{$time}/10);
     -o-animation-delay: calc(#{$time}/10);
 }
+
+// Function for top navigation fading in with page refresh. You can change number of li elements in menu trough li-num variable. Function change animation-delay property for every li in top navigation and calculates correct translateX property using mixin.
+
+@for $i from $startIndex through $li-num {
+    #item-#{$i} {
+        @include animation-delay(#{$i}s);
+
+        &.active {
+            &~.indicator {
+                @include transform-translateX(#{$li-translate}, #{$i});
+
+            }
+        }
+    }
+}
+
+
+// Function for setting skill animations delay
+@for $i from $startIndex through $skill-num {
+    #skill-#{$i} {
+        @include animation-delay(#{$i*1.5}s);
+        }
+    }
+
+
+// Styling
 
 
 body {
@@ -356,19 +397,6 @@ ul {
 }
 
 
-// Function for movement animation of indicator. 
-@for $i from $startIndex through $li-num {
-    #item-#{$i} {
-        @include animation-delay(#{$i}s);
-
-        &.active {
-            &~.indicator {
-                @include transform-translateX(#{$li-translate}, #{$i});
-
-            }
-        }
-    }
-}
 
 .mobile-menu {
     position: fixed;
@@ -478,7 +506,7 @@ section {
         height: calc(100vh - 60px);
         margin-top: 60px;
         background-image: url(/assets/images/background.png);
-        background-size: 100%;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
@@ -713,15 +741,12 @@ section {
     }
 }
 
-.skills-container {
-    opacity: 0;
-    @include transition(all, linear, 0.5s);
-
     .skill-container {
         padding: 50px;
         font-size: 5rem;
-        @include transition(all, linear, 0.5s);
         overflow: hidden;
+        opacity: 0;
+        @include transition(all, linear, 0.5s);
 
         i {
             background: linear-gradient(45deg, $color-cyan-light, $color-cyan-dark);
@@ -730,6 +755,15 @@ section {
             -moz-background-clip: text;
             -webkit-text-fill-color: transparent;
             @include transition(all, linear, 0.3s);
+            cursor: pointer;
+
+            &:hover {
+                    @include transform-translateY(5px);
+    
+              +  p {
+                    @include transform-translateY(-5px);
+                }
+            }
 
         }
 
@@ -743,14 +777,13 @@ section {
 
         }
 
-        &:hover {
-            i {
-                @include transform-translateY(5px);
-            }
+    }
 
-            p {
-                @include transform-translateY(-5px);
-            }
+.skills-container {
+    &.active {
+        .skill-container {
+            animation: fadeIn 0.5s forwards linear;
+
         }
     }
 }
