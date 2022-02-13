@@ -888,6 +888,10 @@ section.skills h2 {
   animation: fadeIn 0.5s forwards linear;
 }
 
+section.portfolio {
+  background: #EDEDED;
+}
+
 section.portfolio h2 {
   display: inline-block;
 }
