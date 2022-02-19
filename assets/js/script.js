@@ -65,31 +65,41 @@ $($('.skill-container').get().reverse()).each(function(index) {
 });
 
 
-// Fade in animations of sections content
+// Entrance animations of sections content
 $(window).on('scroll', function() {
     
+    // About me section - picture and blob fade in when user reach section by scrolling
     if($(window).scrollTop() + $(window).height() / 1.25 > $('.picture-container').offset().top) {
     $('.picture-container').css('transform', 'translate(0%, 0%)');
     $('.picture-container').css('opacity', 1);
     $('.picture-container .blob').css('transform', 'translate(0%, 0%)');
     }
 
+        // About me section - picture and blob fade out when user scrolling up above section
     if($(window).scrollTop() + $(window).height()  < $('.picture-container').offset().top) {
         $('.picture-container').css('transform', 'translate(10%, 0%)');
         $('.picture-container').css('opacity', 0);
         $('.picture-container .blob').css('transform', 'translate(40%, 0%)');
         }
 
-            
+        // Skills section - skills fade in when user reach section by scrolling
     if($(window).scrollTop() + $(window).height() / 2 > $('.skills-container').offset().top) {
         $('.skills-container').addClass('active')
         }
-    
+         // Skills section - skill fade out when user scrolling up above section
         if($(window).scrollTop() + $(window).height()  < $('.skills-container').offset().top) {
             $('.skills-container').removeClass('active')
             }
     
+        // Portfolio section - projects appears when user reach section by scrolling
+        if($(window).scrollTop() + $(window).height() / 2 > $('.projects-container').offset().top) {
+            $('.projects-container').addClass('active')
+            }
 
+         // Portfolio section - projects vanish when user scrolling up above section
+         if($(window).scrollTop() + $(window).height()  < $('.projects-container').offset().top)  {
+            $('.projects-container').removeClass('active')
+            }
 });
 
 

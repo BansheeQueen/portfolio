@@ -909,6 +909,21 @@ section.portfolio .waves {
   flex-basis: calc(100% /3);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  transform: scale(0, 0);
+  -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  transition: all linear 0.5s;
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -ms-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  -ms-border-radius: 500px;
+  -o-border-radius: 500px;
 }
 
 .projects-container .project-container img {
@@ -922,7 +937,7 @@ section.portfolio .waves {
   left: 0;
   right: 0;
   padding: 20px;
-  background: #69b0acd4;
+  background: #69b0acea;
   text-align: center;
   transition: 0.5s all linear;
   -webkit-transition: 0.5s all linear;
@@ -937,7 +952,11 @@ section.portfolio .waves {
 }
 
 .projects-container .project-container .overlay h3, .projects-container .project-container .overlay p, .projects-container .project-container .overlay .tags {
-  transform: scale(0, 0);
+  transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
   transition: 0.5s all linear;
   -webkit-transition: 0.5s all linear;
   -moz-transition: 0.5s all linear;
@@ -948,11 +967,23 @@ section.portfolio .waves {
 
 .projects-container .project-container .overlay .more {
   display: block;
+  margin: auto;
+  width: 30%;
+  padding: 2px;
+  border: 1px solid #345856;
   color: #345856;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .projects-container .project-container .overlay .more:hover {
   color: #EDEDED;
+  border-color: #EDEDED;
 }
 
 .projects-container .project-container:hover .overlay {
@@ -965,8 +996,25 @@ section.portfolio .waves {
 }
 
 .projects-container .project-container:hover .overlay h3, .projects-container .project-container:hover .overlay p, .projects-container .project-container:hover .overlay .tags {
-  transform: scale(1, 1);
   transition-delay: 0.5s;
+  transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+}
+
+.projects-container.active .project-container {
+  transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
 }
 
 .project-container:nth-child(3n + 1) .overlay {
@@ -1001,11 +1049,11 @@ section.portfolio .waves {
   color: #4E4B4B;
   background-color: #EDEDED;
   background-size: 100%;
-  border-radius: 20%;
-  -webkit-border-radius: 20%;
-  -moz-border-radius: 20%;
-  -ms-border-radius: 20%;
-  -o-border-radius: 20%;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 @keyframes fadeIn {

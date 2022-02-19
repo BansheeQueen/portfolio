@@ -7,7 +7,7 @@ $color-cyan-dark: #345856;
 $color-cyan-light: #99D9D6;
 $color-dark: #4E4B4B;
 $color-blue: #9CDCFE;
-$portfolio-hover: #69b0acd4;
+$portfolio-hover: #69b0acea;
 
 //indicator movement variables, it allows easy styling modifications of main menu indicator
 $li-width: 60px; //each li's width
@@ -65,6 +65,15 @@ sans-serif;
     -o-transform: translate($deg1, $deg2);
 }
 
+// Mixin for scale with prefixes
+@mixin scale($deg1, $deg2) {
+    transform: scale($deg1, $deg2);
+    -webkit-transform: scale($deg1, $deg2);
+    -moz-transform: scale($deg1, $deg2);
+    -ms-transform: scale($deg1, $deg2);
+    -o-transform: scale($deg1, $deg2);
+}
+
 
 // Mixin for border radius prefixes
 @mixin border-radius($radius) {
@@ -116,12 +125,14 @@ Mixin for main menu indicator styling. It depending completely on declared varia
 }
 
 
-// Function for setting skill animations delay
+// Functions for setting sections animations delay
+// Skill section
 @for $i from $startIndex through $skill-num {
     #skill-#{$i} {
         @include animation-delay(#{$i*1.5}s);
     }
 }
+
 
 
 // Styling
@@ -814,6 +825,9 @@ section {
         flex-basis: calc(100% /3);
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
         overflow: hidden;
+        @include scale(0, 0);
+        @include transition(all, linear, 0.5s);
+        @include border-radius(500px);
 
 
         img {
@@ -837,17 +851,25 @@ section {
             }
 
             h3, p, .tags {
-                transform: scale(0, 0);
+                @include scale(1, 1);
                 @include transition(0.5s, all, linear);
                 transition-delay: 0s;
             }
 
             .more {
                 display: block;
+                margin: auto;
+                width: 30%;
+                padding: 2px;
+                border: 1px solid $color-cyan-dark;
                 color: $color-cyan-dark;
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+                @include border-radius(20px);
 
                 &:hover {
                     color: $color-light;
+                    border-color: $color-light;
                 }
     
             }
@@ -860,14 +882,23 @@ section {
                 transition-delay: 0s;
 
                 h3, p, .tags {
-                    transform: scale(1, 1);
                     transition-delay: 0.5s;
+                    @include scale(1, 1)
                 }
 
             }
         }
     }
 
+}
+
+.projects-container {
+    &.active {
+        .project-container {
+            @include scale(1, 1);
+            @include border-radius(0px);
+        }
+    }
 }
 
 .project-container {
@@ -902,7 +933,7 @@ section {
             color: $color-dark;
             background-color: $color-light;
             background-size: 100%;
-            @include border-radius(20%)
+            @include border-radius(20px);
         }
 
 
