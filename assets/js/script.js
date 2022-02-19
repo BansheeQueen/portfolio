@@ -47,7 +47,7 @@ const underlineWidth = (name) => {
     let scroll = 0;
     let precentage = 0;
     if($(window).scrollTop() + $(window).height() > $(name).offset().top) {
-        scroll = $(window).scrollTop() + $(window).height()  - $(name).offset().top;
+        scroll = $(window).scrollTop() + $(window).height()  - $(name).offset().top - 100;
         precentage = scroll / $(name).height() * 100;
          $(name + ' .underline').css('width',  precentage + "%");
         }

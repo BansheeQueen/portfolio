@@ -7,6 +7,7 @@ $color-cyan-dark: #345856;
 $color-cyan-light: #99D9D6;
 $color-dark: #4E4B4B;
 $color-blue: #9CDCFE;
+$portfolio-hover: #69b0acd4;
 
 //indicator movement variables, it allows easy styling modifications of main menu indicator
 $li-width: 60px; //each li's width
@@ -119,8 +120,8 @@ Mixin for main menu indicator styling. It depending completely on declared varia
 @for $i from $startIndex through $skill-num {
     #skill-#{$i} {
         @include animation-delay(#{$i*1.5}s);
-        }
     }
+}
 
 
 // Styling
@@ -199,6 +200,19 @@ button {
     }
 }
 
+
+.btn-primary {
+    font-size: 0.8rem;
+    border-color: $color-cyan;
+    background-color: $color-cyan-light;
+    color: $color-dark;
+    box-shadow: 0px 0px 5px rgba(72, 72, 72, 0.6);
+        &:hover {
+            background-color: $color-cyan;
+        }
+}
+
+
 /* Navigation */
 header {
     &.top-navigation {
@@ -240,11 +254,6 @@ header {
         position: absolute;
         top: 8px;
         left: 250px;
-        font-size: 0.8rem;
-        border-color: $color-cyan;
-        background-color: $color-cyan-light;
-        color: $color-dark;
-        box-shadow: 0px 0px 5px rgba(72, 72, 72, 0.6);
         z-index: 10;
 
         &:hover {
@@ -588,18 +597,6 @@ section {
         animation: 0.8s linear forwards fadeIn;
     }
 
-    button {
-        margin-top: 20px;
-        border-color: $color-cyan;
-        background-color: $color-cyan-light;
-        color: $color-dark;
-        box-shadow: 0px 0px 3px $color-dark;
-
-        &:hover {
-            background-color: $color-cyan;
-        }
-    }
-
 }
 
 .waves {
@@ -741,43 +738,43 @@ section {
     }
 }
 
-    .skill-container {
-        padding: 50px;
-        font-size: 5rem;
-        overflow: hidden;
-        opacity: 0;
-        @include transition(all, linear, 0.5s);
+.skill-container {
+    padding: 50px;
+    font-size: 5rem;
+    overflow: hidden;
+    opacity: 0;
+    @include transition(all, linear, 0.5s);
 
-        i {
-            background: linear-gradient(45deg, $color-cyan-light, $color-cyan-dark);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -moz-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            @include transition(all, linear, 0.3s);
-            cursor: pointer;
+    i {
+        background: linear-gradient(45deg, $color-cyan-light, $color-cyan-dark);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        @include transition(all, linear, 0.3s);
+        cursor: pointer;
 
-            &:hover {
-                    @include transform-translateY(5px);
-    
-              +  p {
-                    @include transform-translateY(-5px);
-                }
+        &:hover {
+            @include transform-translateY(5px);
+
+            +p {
+                @include transform-translateY(-5px);
             }
-
-        }
-
-        p {
-            font-size: 1rem;
-            color: $color-dark;
-            text-align: center;
-            font-weight: 600;
-            @include transform-translateY(500%);
-            @include transition(all, linear, 0.3s);
-
         }
 
     }
+
+    p {
+        font-size: 1rem;
+        color: $color-dark;
+        text-align: center;
+        font-weight: 600;
+        @include transform-translateY(500%);
+        @include transition(all, linear, 0.3s);
+
+    }
+
+}
 
 .skills-container {
     &.active {
@@ -791,13 +788,127 @@ section {
 // Portfolio
 section {
     &.portfolio {
-            background: $color-light;
+        position: relative;
+        padding-top: 150px;
+        background: $color-light;
+
         h2 {
             display: inline-block;
+        }
+
+
+        .waves {
+            top: 0;
+            transform: rotate(180deg);
         }
     }
 }
 
+.projects-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    gap: 10px 0;
+
+    .project-container {
+        position: relative;
+        flex-basis: calc(100% /3);
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+
+
+        img {
+            width: 100%;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: $portfolio-hover;
+            text-align: center;
+            @include transition(0.5s, all, linear);
+            transition-delay: 0.5s;
+
+            p {
+                color: $color-light;
+            }
+
+            h3, p, .tags {
+                transform: scale(0, 0);
+                @include transition(0.5s, all, linear);
+                transition-delay: 0s;
+            }
+
+            .more {
+                display: block;
+                color: $color-cyan-dark;
+
+                &:hover {
+                    color: $color-light;
+                }
+    
+            }
+
+        }
+
+        &:hover {
+            .overlay {
+                @include transform-translate(0%, 0%);
+                transition-delay: 0s;
+
+                h3, p, .tags {
+                    transform: scale(1, 1);
+                    transition-delay: 0.5s;
+                }
+
+            }
+        }
+    }
+
+}
+
+.project-container {
+    &:nth-child(3n + 1) {
+        .overlay {
+            @include transform-translate(-110%, 0%);
+        }
+    }
+
+    &:nth-child(3n + 2) {
+        .overlay {
+            @include transform-translate(0%, -110%);
+        }
+    }
+
+    &:nth-child(3n + 3) {
+        .overlay {
+            @include transform-translate(110%, 0%);
+        }
+    }
+
+}
+
+.project-container {
+.overlay {
+    .tags {
+        p {
+            display: inline-block;
+            margin: 10px;
+            padding: 5px;
+            font-size: 0.7rem;
+            color: $color-dark;
+            background-color: $color-light;
+            background-size: 100%;
+            @include border-radius(20%)
+        }
+
+
+    }
+}
+}
 // Animations
 
 @keyframes fadeIn {

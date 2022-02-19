@@ -264,6 +264,18 @@ button.navbar-toggle {
   display: none;
 }
 
+.btn-primary {
+  font-size: 0.8rem;
+  border-color: #69B0AC;
+  background-color: #99D9D6;
+  color: #4E4B4B;
+  box-shadow: 0px 0px 5px rgba(72, 72, 72, 0.6);
+}
+
+.btn-primary:hover {
+  background-color: #69B0AC;
+}
+
 /* Navigation */
 header.top-navigation {
   position: fixed;
@@ -304,11 +316,6 @@ header.top-navigation {
   position: absolute;
   top: 8px;
   left: 250px;
-  font-size: 0.8rem;
-  border-color: #69B0AC;
-  background-color: #99D9D6;
-  color: #4E4B4B;
-  box-shadow: 0px 0px 5px rgba(72, 72, 72, 0.6);
   z-index: 10;
 }
 
@@ -697,18 +704,6 @@ section.banner {
   animation: 0.8s linear forwards fadeIn;
 }
 
-.banner-title button {
-  margin-top: 20px;
-  border-color: #69B0AC;
-  background-color: #99D9D6;
-  color: #4E4B4B;
-  box-shadow: 0px 0px 3px #4E4B4B;
-}
-
-.banner-title button:hover {
-  background-color: #69B0AC;
-}
-
 .waves {
   position: absolute;
   left: 0;
@@ -889,11 +884,128 @@ section.skills h2 {
 }
 
 section.portfolio {
+  position: relative;
+  padding-top: 150px;
   background: #EDEDED;
 }
 
 section.portfolio h2 {
   display: inline-block;
+}
+
+section.portfolio .waves {
+  top: 0;
+  transform: rotate(180deg);
+}
+
+.projects-container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  gap: 10px 0;
+}
+
+.projects-container .project-container {
+  position: relative;
+  flex-basis: calc(100% /3);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.projects-container .project-container img {
+  width: 100%;
+}
+
+.projects-container .project-container .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: #69b0acd4;
+  text-align: center;
+  transition: 0.5s all linear;
+  -webkit-transition: 0.5s all linear;
+  -moz-transition: 0.5s all linear;
+  -ms-transition: 0.5s all linear;
+  -o-transition: 0.5s all linear;
+  transition-delay: 0.5s;
+}
+
+.projects-container .project-container .overlay p {
+  color: #EDEDED;
+}
+
+.projects-container .project-container .overlay h3, .projects-container .project-container .overlay p, .projects-container .project-container .overlay .tags {
+  transform: scale(0, 0);
+  transition: 0.5s all linear;
+  -webkit-transition: 0.5s all linear;
+  -moz-transition: 0.5s all linear;
+  -ms-transition: 0.5s all linear;
+  -o-transition: 0.5s all linear;
+  transition-delay: 0s;
+}
+
+.projects-container .project-container .overlay .more {
+  display: block;
+  color: #345856;
+}
+
+.projects-container .project-container .overlay .more:hover {
+  color: #EDEDED;
+}
+
+.projects-container .project-container:hover .overlay {
+  transform: translate(0%, 0%);
+  -webkit-transform: translate(0%, 0%);
+  -moz-transform: translate(0%, 0%);
+  -ms-transform: translate(0%, 0%);
+  -o-transform: translate(0%, 0%);
+  transition-delay: 0s;
+}
+
+.projects-container .project-container:hover .overlay h3, .projects-container .project-container:hover .overlay p, .projects-container .project-container:hover .overlay .tags {
+  transform: scale(1, 1);
+  transition-delay: 0.5s;
+}
+
+.project-container:nth-child(3n + 1) .overlay {
+  transform: translate(-110%, 0%);
+  -webkit-transform: translate(-110%, 0%);
+  -moz-transform: translate(-110%, 0%);
+  -ms-transform: translate(-110%, 0%);
+  -o-transform: translate(-110%, 0%);
+}
+
+.project-container:nth-child(3n + 2) .overlay {
+  transform: translate(0%, -110%);
+  -webkit-transform: translate(0%, -110%);
+  -moz-transform: translate(0%, -110%);
+  -ms-transform: translate(0%, -110%);
+  -o-transform: translate(0%, -110%);
+}
+
+.project-container:nth-child(3n + 3) .overlay {
+  transform: translate(110%, 0%);
+  -webkit-transform: translate(110%, 0%);
+  -moz-transform: translate(110%, 0%);
+  -ms-transform: translate(110%, 0%);
+  -o-transform: translate(110%, 0%);
+}
+
+.project-container .overlay .tags p {
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+  font-size: 0.7rem;
+  color: #4E4B4B;
+  background-color: #EDEDED;
+  background-size: 100%;
+  border-radius: 20%;
+  -webkit-border-radius: 20%;
+  -moz-border-radius: 20%;
+  -ms-border-radius: 20%;
+  -o-border-radius: 20%;
 }
 
 @keyframes fadeIn {
