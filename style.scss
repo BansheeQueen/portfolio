@@ -741,7 +741,7 @@ section {
 // Skills
 section {
     &.skills {
-        margin: 80px 0;
+        margin: 80px 0 20px 0;
 
         h2 {
             display: inline-block;
@@ -940,6 +940,133 @@ section {
     }
 }
 }
+
+
+// FOOTER
+footer {
+    padding: 80px 50px 10px 80px;
+    background-color: $color-dark;
+    overflow: hidden;
+
+
+    .social {
+        font-size: 3rem;
+        opacity: 0;
+        @include transform-translate(-200%, 0%);
+        @include transition(all, linear, 0.5s);
+        transition-delay: 0.5s;
+
+}
+h3 {
+    flex-basis: 100%;
+    font-size: 1.5rem;
+    color: $color-cyan;
+    text-align: center;
+    opacity: 0;
+    @include transform-translate(0%, -200%);
+    @include transition(all, linear, 0.5s);
+
+
+}
+
+.contact {    color: $color-light;}
+
+.copyright {
+    margin: 30px;
+    font-size: 0.9rem;
+    color: $color-cyan;
+    letter-spacing: 2px;
+    line-height: 150%;
+    text-align: center;
+    opacity: 0;
+    @include transition(all, linear, 0.5s);
+    transition-delay: 0.5s;
+}
+
+}
+
+.contact {
+    margin: auto;
+
+    form {
+        position: relative;
+        width: 80%;
+        min-width: 400px;
+        max-width: 880px;
+        padding: 20px 80px;
+        border: 1px solid $color-cyan;
+        font-size: 0.9rem;
+        line-height: 120%;
+        opacity: 0;
+        @include border-radius(20px);
+        @include transform-translate(0%, 200%);
+        @include transition(all, linear, 0.8s);
+        transition-delay: 0.2s;
+        z-index: 2;
+
+        label {
+            flex-basis: 10%;
+            min-width: 50px;
+            max-width: 80px;
+            margin: 0;
+            padding: 10px 20px;
+            background: $color-cyan;
+            text-align: center;
+        }
+
+        input#email, textarea {
+            padding: 10px;
+            background-color: $color-light;
+            border: 0;
+
+            &:focus-visible {
+                outline: 2px solid $color-cyan-light;
+            }
+        }
+
+        input#email {
+            flex-basis: 90%;
+        }
+
+        textarea {
+            flex-basis: 90%;
+            margin: 10px 0px 0px 0px;
+            height: 20vh;
+            min-height: 200px;
+
+        }
+
+        .submit {
+            position: relative;
+            flex-basis:10%;
+            min-width: 50px;
+            margin: 10px 0 0 0;
+            padding: 20px 0;
+            background: $color-cyan-dark;
+            border: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            text-align: center;
+            @include border-radius(0);
+
+            &:hover {
+                background: $color-cyan;
+            }
+        }
+
+    
+    }
+}
+
+footer {
+    &.active {
+            .social, form, h3, .copyright {
+                    @include transform-translate(0%, 0%);
+                    opacity: 1;
+            }
+    }
+}
+
 // Animations
 
 @keyframes fadeIn {
@@ -969,3 +1096,4 @@ section {
         opacity: 1;
     }
 }
+

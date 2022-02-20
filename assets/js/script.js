@@ -100,6 +100,16 @@ $(window).on('scroll', function() {
          if($(window).scrollTop() + $(window).height()  < $('.projects-container').offset().top)  {
             $('.projects-container').removeClass('active')
             }
+
+                // Footer - content appears when user reach section by scrolling
+                if($(window).scrollTop() + $(window).height() / 1.5 > $('footer').offset().top) {
+                    $('footer').addClass('active')
+                    }
+        
+                 // Footer- content vanish when user scrolling up above section
+                 if($(window).scrollTop() + $(window).height() * 2  < $('footer').offset().top)  {
+                    $('footer').removeClass('active')
+                    }
 });
 
 
