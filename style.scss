@@ -940,8 +940,29 @@ section {
     }
 }
 }
+@media only screen and (max-width: 1400px ) {
+    .projects-container {
+.project-container {
+    
+    flex-basis: 50%;
+    }}
+}
 
+@media only screen and (max-width: 992px ) {
+    .projects-container {
+.project-container {
+    
+    flex-basis: 80%;
+    }}
+}
 
+@media only screen and (max-width: 768px ) {
+    .projects-container {
+.project-container {
+    
+    flex-basis: 100%;
+    }}
+}
 // FOOTER
 footer {
     padding: 80px 50px 10px 80px;
