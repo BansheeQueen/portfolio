@@ -965,7 +965,7 @@ section {
 }
 // FOOTER
 footer {
-    padding: 80px 50px 10px 80px;
+    padding: 80px 50px 10px 50px;
     background-color: $color-dark;
     overflow: hidden;
 
@@ -1088,6 +1088,37 @@ footer {
     }
 }
 
+@media only screen and (max-width: 1200px) { 
+    .contact {
+        form {
+            padding: 20px;
+        }
+    }
+}
+
+    @media only screen and (max-width: 996px) { 
+        .contact {
+            form {
+            input#email {
+                flex-basis: calc(90% - 50px);
+            }
+
+            .submit {
+                flex-basis: 40%;
+                padding: 10px;
+                font-size: 1.5rem;
+            }
+        }}
+    }
+
+    @media only screen and (max-width: 768px) { 
+       footer {
+           .social {
+               margin-bottom: 30px;
+
+           }
+       }
+    }
 // Animations
 
 @keyframes fadeIn {

@@ -1075,7 +1075,7 @@ section.portfolio .waves {
 }
 
 footer {
-  padding: 80px 50px 10px 80px;
+  padding: 80px 50px 10px 50px;
   background-color: #4E4B4B;
   overflow: hidden;
 }
@@ -1227,6 +1227,29 @@ footer.active .social, footer.active form, footer.active h3, footer.active .copy
   -ms-transform: translate(0%, 0%);
   -o-transform: translate(0%, 0%);
   opacity: 1;
+}
+
+@media only screen and (max-width: 1200px) {
+  .contact form {
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .contact form input#email {
+    flex-basis: calc(90% - 50px);
+  }
+  .contact form .submit {
+    flex-basis: 40%;
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  footer .social {
+    margin-bottom: 30px;
+  }
 }
 
 @keyframes fadeIn {
