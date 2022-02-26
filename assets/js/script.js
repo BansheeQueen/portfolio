@@ -69,12 +69,25 @@ $(window).on('scroll', function(){underlineWidth('.about')});
 $(window).on('scroll', function(){underlineWidth('.skills')});
 $(window).on('scroll', function(){underlineWidth('.portfolio')});
 
+// Function changing active li element in main menu
+const spyScroll = (IDName) => {
+    $('.menu-item').each(function() {
+        $(this).removeClass('active');
+    })
+
+    $('.menu-item ').each(function() {
+       if($(this).children().attr('href') === IDName) {
+            $(this).addClass('active');
+       }
+    })
+    }; 
 
 // Function for entrance and exit animations for sections content
-const animateSection = (animatedElement, entranceDivider = 1, exitMultiplier = 1) => {
+const animateSection = (animatedElement, IDName, entranceDivider = 1, exitMultiplier = 1) => {
     // Entrance animations
         if($(window).scrollTop() + $(window).height() / entranceDivider > $(`${animatedElement}`).offset().top) {
             $(`${animatedElement}`).addClass('active');
+            spyScroll(IDName);
             }
         
     // Exit animations
@@ -84,20 +97,22 @@ const animateSection = (animatedElement, entranceDivider = 1, exitMultiplier = 1
 
 }
 
-// Entrance animations of sections content
+
+// Entrance animations of sections content and scrollspy setup
 $(window).on('scroll', function() {
-    
-    // About me section - picture and blob fade in when user reach section by scrolling
-    animateSection('.picture-container', 1.25);
+    // Home section - no animations
+    animateSection('.top-navigation', '#home');
+    // About me section 
+    animateSection('.picture-container', '#about-me', 1);
 
-    // Skills section - skills fade in when user reach section by scrolling
-    animateSection('.skills-container', 2);
+    // Skills section -
+    animateSection('.skills-container', '#skills', 1);
 
-    // Portfolio section - projects appears when user reach section by scrolling
-    animateSection('.projects-container', 2);
+    // Portfolio section 
+    animateSection('.projects-container', '#portfolio', 1.25);
 
-    // Footer - content appears when user reach section by scrolling
-    animateSection('footer', 1.5, 2);
+    // Footer 
+    animateSection('footer', '#contact', 1);
 
 });
 
