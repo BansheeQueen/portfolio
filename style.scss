@@ -423,16 +423,15 @@ ul {
     position: fixed;
     top: 60px;
     bottom: 0;
-    left: 0;
+    left: 100%;
     right: 0;
-    display: none;
     background: rgba(72, 72, 72, 0.8);
     opacity: 0;
-    @include transition(all, linear, 0.5s);
+    @include transition(all, linear, 0.1s);
 
     &.open {
-        display: block;
         opacity: 1;
+        left: 0;
 
         .menu-box {
             transform: translateX(0%);
