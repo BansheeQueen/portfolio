@@ -26,7 +26,7 @@ This is static one-page site with portfolio section. It is build to practice my 
 
 - Bootstrap
 - Sass
-- Responsive web seigning
+- Responsive web designing
 
 
 ## Author
