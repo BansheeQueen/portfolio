@@ -1,9 +1,19 @@
 
-//  Navigation indicator movement
-/*Setting each li ID number*/ 
-$($('.menu-item').get().reverse()).each(function(index) {
-    $(this).attr('id', 'item-'+(index));
-});
+// Function for adding ID for chosen elements.
+const setID = (element, name) => {
+    $($(`${element}`).get().reverse()).each(function(index) {
+        $(this).attr('id', `${name}-`+(index));
+    });  
+    
+}
+
+
+/*Setting each li ID number. It is needed for indicators movements in main menu*/ 
+setID('.menu-item', 'item');
+
+// Setting each skill own ID number
+setID('.skill-container', 'skill');
+
 
 /*Toggle li's active class */
 $('.menu-item').on('click', function() {
@@ -58,11 +68,6 @@ const underlineWidth = (name) => {
 $(window).on('scroll', function(){underlineWidth('.about')});
 $(window).on('scroll', function(){underlineWidth('.skills')});
 $(window).on('scroll', function(){underlineWidth('.portfolio')});
-
-// Setting each skill own ID number
-$($('.skill-container').get().reverse()).each(function(index) {
-    $(this).attr('id', 'skill-'+(index));
-});
 
 
 // Entrance animations of sections content
