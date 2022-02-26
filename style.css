@@ -755,6 +755,11 @@ section.about h2 .underline {
   -moz-transition: all linear 0.5s;
   -ms-transition: all linear 0.5s;
   -o-transition: all linear 0.5s;
+  transform: translate(10%, 0%);
+  -webkit-transform: translate(10%, 0%);
+  -moz-transform: translate(10%, 0%);
+  -ms-transform: translate(10%, 0%);
+  -o-transform: translate(10%, 0%);
 }
 
 .picture-container .picture-bg {
@@ -787,6 +792,28 @@ section.about h2 .underline {
   -moz-transition: all linear 0.8s;
   -ms-transition: all linear 0.8s;
   -o-transition: all linear 0.8s;
+  transform: translate(40%, 0%);
+  -webkit-transform: translate(40%, 0%);
+  -moz-transform: translate(40%, 0%);
+  -ms-transform: translate(40%, 0%);
+  -o-transform: translate(40%, 0%);
+}
+
+.picture-container.active {
+  opacity: 1;
+  transform: translate(0%, 0%);
+  -webkit-transform: translate(0%, 0%);
+  -moz-transform: translate(0%, 0%);
+  -ms-transform: translate(0%, 0%);
+  -o-transform: translate(0%, 0%);
+}
+
+.picture-container.active .blob {
+  transform: translate(0%, 0%);
+  -webkit-transform: translate(0%, 0%);
+  -moz-transform: translate(0%, 0%);
+  -ms-transform: translate(0%, 0%);
+  -o-transform: translate(0%, 0%);
 }
 
 @media screen and (max-width: 980px) {
