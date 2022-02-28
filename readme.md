@@ -20,7 +20,7 @@ This is static one-page site with portfolio section. It is build to practice my 
 
 ### Links
 
-- Live Demo: [Add live site URL here](https://vigilant-carson-c938dd.netlify.app)
+- Live Demo: [Here](https://gallant-dubinsky-7c60c5.netlify.app)
 
 ## Built with
 
